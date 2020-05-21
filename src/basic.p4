@@ -141,7 +141,6 @@ control MyIngress(inout headers hdr,
         standard_metadata.mcast_grp = 1;
     }
 
-
     table ipv4_lpm {
         key = {
             hdr.ipv4.dstAddr: lpm;
@@ -159,11 +158,11 @@ control MyIngress(inout headers hdr,
         /*we need to steer packets through different functions here*/
         if(hdr.gvt.type == TYPE_PROP){
           GVT.read(meta.currentGVT, 0);
+
+          LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
           /*if the value is equal to the GVT we dont need to check anything*/
           if(meta.currentGVT <= hdr.gvt.value){
-            LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
             meta.minLVT = hdr.gvt.value;
-
 
             /*begin while*/
             LvtValues.read(meta.readedValue, 0);
@@ -182,11 +181,6 @@ control MyIngress(inout headers hdr,
               hdr.gvt.value = meta.minLVT;
               multicast(); 
             }
-
-            //meta.numProposals = meta.numProposals + 1;
-            //numProposalsPerRound.write(0, meta.numProposals);
-            //send_to_gvt_c.apply();
-            /*TODO: else drop the packet*/
           }
         } else if(hdr.gvt.type == TYPE_REQ){
           start_round();
