@@ -8,6 +8,7 @@ from scapy.all import Packet, IPOption
 from scapy.all import ShortField, IntField, LongField, BitField, FieldListField, FieldLenField
 from scapy.all import IP, TCP, UDP, Raw
 from scapy.layers.inet import _IPOption_HDR
+from proposalHeader import GvtProtocol
 
 def get_if():
     ifs=get_if_list()
@@ -39,6 +40,10 @@ def handle_pkt(pkt):
         pkt.show2()
     #    hexdump(pkt)
         sys.stdout.flush()
+    #this is the parameter     
+    if GvtProtocol in pkt:
+        print pkt[GvtProtocol].lvt
+    print "teste"
 
 
 def main():

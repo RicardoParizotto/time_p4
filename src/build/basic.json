@@ -5,8 +5,9 @@
       "id" : 0,
       "fields" : [
         ["metadata.readedValue", 32, false],
-        ["metadata.minPropose", 32, false],
-        ["metadata.numProposals", 32, false]
+        ["metadata.currentGVT", 32, false],
+        ["metadata.numProposals", 32, false],
+        ["metadata.minLVT", 32, false]
       ]
     },
     {
@@ -224,7 +225,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 283,
+        "line" : 240,
         "column" : 8,
         "source_fragment" : "MyDeparser"
       },
@@ -235,37 +236,25 @@
   "counter_arrays" : [],
   "register_arrays" : [
     {
-      "name" : "proposerLastRound",
+      "name" : "LvtValues",
       "id" : 0,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 110,
+        "line" : 111,
         "column" : 21,
-        "source_fragment" : "proposerLastRound"
+        "source_fragment" : "LvtValues"
       },
       "size" : 2,
       "bitwidth" : 32
     },
     {
-      "name" : "minProposal",
+      "name" : "GVT",
       "id" : 1,
-      "source_info" : {
-        "filename" : "basic.p4",
-        "line" : 111,
-        "column" : 21,
-        "source_fragment" : "minProposal"
-      },
-      "size" : 1,
-      "bitwidth" : 32
-    },
-    {
-      "name" : "numProposalsPerRound",
-      "id" : 2,
       "source_info" : {
         "filename" : "basic.p4",
         "line" : 112,
         "column" : 21,
-        "source_fragment" : "numProposalsPerRound"
+        "source_fragment" : "GVT"
       },
       "size" : 1,
       "bitwidth" : 32
@@ -277,7 +266,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 261,
+        "line" : 218,
         "column" : 5,
         "source_fragment" : "update_checksum( ..."
       },
@@ -339,14 +328,8 @@
       "primitives" : []
     },
     {
-      "name" : "NoAction",
-      "id" : 1,
-      "runtime_data" : [],
-      "primitives" : []
-    },
-    {
       "name" : "MyIngress.drop",
-      "id" : 2,
+      "id" : 1,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -359,7 +342,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 122,
+            "line" : 123,
             "column" : 8,
             "source_fragment" : "mark_to_drop(standard_metadata)"
           }
@@ -368,7 +351,7 @@
     },
     {
       "name" : "MyIngress.ipv4_forward",
-      "id" : 3,
+      "id" : 2,
       "runtime_data" : [
         {
           "name" : "dstAddr",
@@ -394,7 +377,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 126,
+            "line" : 127,
             "column" : 8,
             "source_fragment" : "standard_metadata.egress_spec = port"
           }
@@ -413,7 +396,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 127,
+            "line" : 128,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
           }
@@ -432,7 +415,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 128,
+            "line" : 129,
             "column" : 8,
             "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
           }
@@ -474,7 +457,7 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 129,
+            "line" : 130,
             "column" : 8,
             "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
           }
@@ -483,7 +466,7 @@
     },
     {
       "name" : "MyIngress.start_round",
-      "id" : 4,
+      "id" : 3,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -491,7 +474,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "minProposal"
+              "value" : "GVT"
             },
             {
               "type" : "hexstr",
@@ -499,14 +482,14 @@
             },
             {
               "type" : "hexstr",
-              "value" : "0x000f4240"
+              "value" : "0x00000000"
             }
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 145,
+            "line" : 135,
             "column" : 6,
-            "source_fragment" : "minProposal.write(0, 1000000)"
+            "source_fragment" : "GVT.write(0, 0)"
           }
         },
         {
@@ -514,7 +497,7 @@
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "numProposalsPerRound"
+              "value" : "LvtValues"
             },
             {
               "type" : "hexstr",
@@ -527,16 +510,189 @@
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 146,
+            "line" : 136,
             "column" : 6,
-            "source_fragment" : "numProposalsPerRound.write(0,0)"
+            "source_fragment" : "LvtValues.write(0, 0)"
+          }
+        },
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "LvtValues"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000001"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 137,
+            "column" : 6,
+            "source_fragment" : "LvtValues.write(1, 0)"
           }
         }
       ]
     },
     {
-      "name" : "MyIngress.receive_proposal",
+      "name" : "MyIngress.multicast",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "mcast_grp"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 141,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.mcast_grp = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act",
       "id" : 5,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.minLVT"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.readedValue"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 171,
+            "column" : 14,
+            "source_fragment" : "meta.minLVT = meta.readedValue"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_0",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_write",
+          "parameters" : [
+            {
+              "type" : "register_array",
+              "value" : "LvtValues"
+            },
+            {
+              "type" : "field",
+              "value" : ["gvt", "pid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["gvt", "value"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 164,
+            "column" : 12,
+            "source_fragment" : "LvtValues.write(hdr.gvt.pid, hdr.gvt.value)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.minLVT"]
+            },
+            {
+              "type" : "field",
+              "value" : ["gvt", "value"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 165,
+            "column" : 12,
+            "source_fragment" : "meta.minLVT = hdr.gvt.value"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.readedValue"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "LvtValues"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 169,
+            "column" : 12,
+            "source_fragment" : "LvtValues.read(meta.readedValue, 0)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_1",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.minLVT"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.readedValue"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 176,
+            "column" : 14,
+            "source_fragment" : "meta.minLVT = meta.readedValue"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_2",
+      "id" : 8,
       "runtime_data" : [],
       "primitives" : [
         {
@@ -548,235 +704,33 @@
             },
             {
               "type" : "register_array",
-              "value" : "proposerLastRound"
-            },
-            {
-              "type" : "field",
-              "value" : ["gvt", "pid"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 150,
-            "column" : 6,
-            "source_fragment" : "proposerLastRound.read(meta.readedValue, lp)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "metadata.minPropose"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "minProposal"
+              "value" : "LvtValues"
             },
             {
               "type" : "hexstr",
-              "value" : "0x00000000"
+              "value" : "0x00000001"
             }
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 151,
-            "column" : 6,
-            "source_fragment" : "minProposal.read(meta.minPropose, 0)"
-          }
-        },
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "metadata.numProposals"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "numProposalsPerRound"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 152,
-            "column" : 6,
-            "source_fragment" : "numProposalsPerRound.read(meta.numProposals, 0)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "MyIngress.send_to_gvt_controller",
-      "id" : 6,
-      "runtime_data" : [
-        {
-          "name" : "port",
-          "bitwidth" : 9
-        }
-      ],
-      "primitives" : [
-        {
-          "op" : "register_read",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["gvt", "value"]
-            },
-            {
-              "type" : "register_array",
-              "value" : "minProposal"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 157,
-            "column" : 6,
-            "source_fragment" : "minProposal.read(hdr.gvt.value, 0)"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["standard_metadata", "egress_spec"]
-            },
-            {
-              "type" : "runtime_data",
-              "value" : 0
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 158,
-            "column" : 6,
-            "source_fragment" : "standard_metadata.egress_spec = port"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "act",
-      "id" : 7,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "minProposal"
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0x00000000"
-            },
-            {
-              "type" : "field",
-              "value" : ["gvt", "value"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 196,
-            "column" : 14,
-            "source_fragment" : "minProposal.write(0, hdr.gvt.value)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "act_0",
-      "id" : 8,
-      "runtime_data" : [],
-      "primitives" : [
-        {
-          "op" : "register_write",
-          "parameters" : [
-            {
-              "type" : "register_array",
-              "value" : "proposerLastRound"
-            },
-            {
-              "type" : "field",
-              "value" : ["gvt", "pid"]
-            },
-            {
-              "type" : "field",
-              "value" : ["gvt", "round"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 194,
+            "line" : 174,
             "column" : 12,
-            "source_fragment" : "proposerLastRound.write(hdr.gvt.pid, hdr.gvt.round)"
+            "source_fragment" : "LvtValues.read(meta.readedValue, 1)"
           }
         }
       ]
     },
     {
-      "name" : "act_1",
+      "name" : "act_3",
       "id" : 9,
       "runtime_data" : [],
       "primitives" : [
         {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "metadata.numProposals"]
-            },
-            {
-              "type" : "expression",
-              "value" : {
-                "type" : "expression",
-                "value" : {
-                  "op" : "&",
-                  "left" : {
-                    "type" : "expression",
-                    "value" : {
-                      "op" : "+",
-                      "left" : {
-                        "type" : "field",
-                        "value" : ["scalars", "metadata.numProposals"]
-                      },
-                      "right" : {
-                        "type" : "hexstr",
-                        "value" : "0x00000001"
-                      }
-                    }
-                  },
-                  "right" : {
-                    "type" : "hexstr",
-                    "value" : "0xffffffff"
-                  }
-                }
-              }
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 198,
-            "column" : 12,
-            "source_fragment" : "meta.numProposals = meta.numProposals + 1"
-          }
-        },
-        {
           "op" : "register_write",
           "parameters" : [
             {
               "type" : "register_array",
-              "value" : "numProposalsPerRound"
+              "value" : "GVT"
             },
             {
               "type" : "hexstr",
@@ -784,51 +738,14 @@
             },
             {
               "type" : "field",
-              "value" : ["scalars", "metadata.numProposals"]
+              "value" : ["scalars", "metadata.minLVT"]
             }
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 199,
-            "column" : 12,
-            "source_fragment" : "numProposalsPerRound.write(0, meta.numProposals)"
-          }
-        }
-      ]
-    },
-    {
-      "name" : "NoAction",
-      "id" : 10,
-      "runtime_data" : [],
-      "primitives" : []
-    },
-    {
-      "name" : "MyEgress.ethernetMap",
-      "id" : 11,
-      "runtime_data" : [
-        {
-          "name" : "dstAddr",
-          "bitwidth" : 48
-        }
-      ],
-      "primitives" : [
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["ethernet", "srcAddr"]
-            },
-            {
-              "type" : "field",
-              "value" : ["ethernet", "dstAddr"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 228,
-            "column" : 6,
-            "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
+            "line" : 181,
+            "column" : 14,
+            "source_fragment" : "GVT.write(0, meta.minLVT)"
           }
         },
         {
@@ -836,18 +753,48 @@
           "parameters" : [
             {
               "type" : "field",
-              "value" : ["ethernet", "dstAddr"]
+              "value" : ["gvt", "value"]
             },
             {
-              "type" : "runtime_data",
-              "value" : 0
+              "type" : "field",
+              "value" : ["scalars", "metadata.minLVT"]
             }
           ],
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 229,
-            "column" : 6,
-            "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
+            "line" : 182,
+            "column" : 14,
+            "source_fragment" : "hdr.gvt.value = meta.minLVT"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_4",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.currentGVT"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "GVT"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 161,
+            "column" : 10,
+            "source_fragment" : "GVT.read(meta.currentGVT, 0)"
           }
         }
       ]
@@ -859,20 +806,78 @@
       "id" : 0,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 118,
+        "line" : 119,
         "column" : 8,
         "source_fragment" : "MyIngress"
       },
       "init_table" : "node_2",
       "tables" : [
         {
-          "name" : "tbl_receive_proposal",
+          "name" : "tbl_act",
           "id" : 0,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 189,
+            "line" : 161,
             "column" : 10,
-            "source_fragment" : "receive_proposal(hdr.gvt.pid, hdr.gvt.value, hdr.gvt.round)"
+            "source_fragment" : "GVT.read(meta.currentGVT, 0)"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10],
+          "actions" : ["act_4"],
+          "base_default_next" : "node_4",
+          "next_tables" : {
+            "act_4" : "node_4"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_0",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 164,
+            "column" : 12,
+            "source_fragment" : "LvtValues.write(hdr.gvt.pid, hdr.gvt.value); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6],
+          "actions" : ["act_0"],
+          "base_default_next" : "node_6",
+          "next_tables" : {
+            "act_0" : "node_6"
+          },
+          "default_entry" : {
+            "action_id" : 6,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_1",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 171,
+            "column" : 26,
+            "source_fragment" : "="
           },
           "key" : [],
           "match_type" : "exact",
@@ -882,10 +887,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [5],
-          "actions" : ["MyIngress.receive_proposal"],
-          "base_default_next" : "node_4",
+          "actions" : ["act"],
+          "base_default_next" : "tbl_act_2",
           "next_tables" : {
-            "MyIngress.receive_proposal" : "node_4"
+            "act" : "tbl_act_2"
           },
           "default_entry" : {
             "action_id" : 5,
@@ -895,13 +900,13 @@
           }
         },
         {
-          "name" : "tbl_act",
-          "id" : 1,
+          "name" : "tbl_act_2",
+          "id" : 3,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 194,
+            "line" : 174,
             "column" : 12,
-            "source_fragment" : "proposerLastRound.write(hdr.gvt.pid, hdr.gvt.round)"
+            "source_fragment" : "LvtValues.read(meta.readedValue, 1)"
           },
           "key" : [],
           "match_type" : "exact",
@@ -911,10 +916,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [8],
-          "actions" : ["act_0"],
-          "base_default_next" : "node_6",
+          "actions" : ["act_2"],
+          "base_default_next" : "node_9",
           "next_tables" : {
-            "act_0" : "node_6"
+            "act_2" : "node_9"
           },
           "default_entry" : {
             "action_id" : 8,
@@ -924,13 +929,13 @@
           }
         },
         {
-          "name" : "tbl_act_0",
-          "id" : 2,
+          "name" : "tbl_act_3",
+          "id" : 4,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 196,
-            "column" : 14,
-            "source_fragment" : "minProposal.write(0, hdr.gvt.value)"
+            "line" : 176,
+            "column" : 26,
+            "source_fragment" : "="
           },
           "key" : [],
           "match_type" : "exact",
@@ -940,10 +945,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [7],
-          "actions" : ["act"],
-          "base_default_next" : "tbl_act_1",
+          "actions" : ["act_1"],
+          "base_default_next" : "node_11",
           "next_tables" : {
-            "act" : "tbl_act_1"
+            "act_1" : "node_11"
           },
           "default_entry" : {
             "action_id" : 7,
@@ -953,13 +958,13 @@
           }
         },
         {
-          "name" : "tbl_act_1",
-          "id" : 3,
+          "name" : "tbl_act_4",
+          "id" : 5,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 198,
-            "column" : 30,
-            "source_fragment" : "= meta.numProposals + 1; ..."
+            "line" : 181,
+            "column" : 14,
+            "source_fragment" : "GVT.write(0, meta.minLVT); ..."
           },
           "key" : [],
           "match_type" : "exact",
@@ -969,10 +974,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [9],
-          "actions" : ["act_1"],
-          "base_default_next" : "MyIngress.send_to_gvt_c",
+          "actions" : ["act_3"],
+          "base_default_next" : "tbl_multicast",
           "next_tables" : {
-            "act_1" : "MyIngress.send_to_gvt_c"
+            "act_3" : "tbl_multicast"
           },
           "default_entry" : {
             "action_id" : 9,
@@ -982,48 +987,40 @@
           }
         },
         {
-          "name" : "MyIngress.send_to_gvt_c",
-          "id" : 4,
+          "name" : "tbl_multicast",
+          "id" : 6,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 176,
-            "column" : 10,
-            "source_fragment" : "send_to_gvt_c"
+            "line" : 183,
+            "column" : 14,
+            "source_fragment" : "multicast()"
           },
-          "key" : [
-            {
-              "match_type" : "exact",
-              "name" : "meta.numProposals",
-              "target" : ["scalars", "metadata.numProposals"],
-              "mask" : null
-            }
-          ],
+          "key" : [],
           "match_type" : "exact",
           "type" : "simple",
           "max_size" : 1024,
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [6, 1],
-          "actions" : ["MyIngress.send_to_gvt_controller", "NoAction"],
-          "base_default_next" : "node_12",
+          "action_ids" : [4],
+          "actions" : ["MyIngress.multicast"],
+          "base_default_next" : "node_16",
           "next_tables" : {
-            "MyIngress.send_to_gvt_controller" : "node_12",
-            "NoAction" : "node_12"
+            "MyIngress.multicast" : "node_16"
           },
           "default_entry" : {
-            "action_id" : 1,
-            "action_const" : false,
+            "action_id" : 4,
+            "action_const" : true,
             "action_data" : [],
-            "action_entry_const" : false
+            "action_entry_const" : true
           }
         },
         {
           "name" : "tbl_start_round",
-          "id" : 5,
+          "id" : 7,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 205,
+            "line" : 192,
             "column" : 10,
             "source_fragment" : "start_round()"
           },
@@ -1034,14 +1031,14 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [4],
+          "action_ids" : [3],
           "actions" : ["MyIngress.start_round"],
-          "base_default_next" : "node_12",
+          "base_default_next" : "node_16",
           "next_tables" : {
-            "MyIngress.start_round" : "node_12"
+            "MyIngress.start_round" : "node_16"
           },
           "default_entry" : {
-            "action_id" : 4,
+            "action_id" : 3,
             "action_const" : true,
             "action_data" : [],
             "action_entry_const" : true
@@ -1049,10 +1046,10 @@
         },
         {
           "name" : "MyIngress.ipv4_lpm",
-          "id" : 6,
+          "id" : 8,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 163,
+            "line" : 145,
             "column" : 10,
             "source_fragment" : "ipv4_lpm"
           },
@@ -1070,7 +1067,7 @@
           "with_counters" : false,
           "support_timeout" : false,
           "direct_meters" : null,
-          "action_ids" : [3, 2, 0],
+          "action_ids" : [2, 1, 0],
           "actions" : ["MyIngress.ipv4_forward", "MyIngress.drop", "NoAction"],
           "base_default_next" : null,
           "next_tables" : {
@@ -1093,7 +1090,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 188,
+            "line" : 160,
             "column" : 11,
             "source_fragment" : "hdr.gvt.type == TYPE_PROP"
           },
@@ -1111,43 +1108,43 @@
               }
             }
           },
-          "true_next" : "tbl_receive_proposal",
-          "false_next" : "node_10"
+          "true_next" : "tbl_act",
+          "false_next" : "node_14"
         },
         {
           "name" : "node_4",
           "id" : 1,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 193,
+            "line" : 163,
             "column" : 13,
-            "source_fragment" : "meta.readedValue != hdr.gvt.round"
+            "source_fragment" : "meta.currentGVT <= hdr.gvt.value"
           },
           "expression" : {
             "type" : "expression",
             "value" : {
-              "op" : "!=",
+              "op" : "<=",
               "left" : {
                 "type" : "field",
-                "value" : ["scalars", "metadata.readedValue"]
+                "value" : ["scalars", "metadata.currentGVT"]
               },
               "right" : {
                 "type" : "field",
-                "value" : ["gvt", "round"]
+                "value" : ["gvt", "value"]
               }
             }
           },
-          "true_next" : "tbl_act",
-          "false_next" : "node_12"
+          "true_next" : "tbl_act_0",
+          "false_next" : "node_16"
         },
         {
           "name" : "node_6",
           "id" : 2,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 195,
+            "line" : 170,
             "column" : 15,
-            "source_fragment" : "hdr.gvt.value < meta.minPropose"
+            "source_fragment" : "meta.readedValue < meta.minLVT"
           },
           "expression" : {
             "type" : "expression",
@@ -1155,24 +1152,76 @@
               "op" : "<",
               "left" : {
                 "type" : "field",
-                "value" : ["gvt", "value"]
+                "value" : ["scalars", "metadata.readedValue"]
               },
               "right" : {
                 "type" : "field",
-                "value" : ["scalars", "metadata.minPropose"]
+                "value" : ["gvt", "value"]
               }
             }
           },
-          "true_next" : "tbl_act_0",
-          "false_next" : "tbl_act_1"
+          "true_next" : "tbl_act_1",
+          "false_next" : "tbl_act_2"
         },
         {
-          "name" : "node_10",
+          "name" : "node_9",
           "id" : 3,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 204,
-            "column" : 17,
+            "line" : 175,
+            "column" : 15,
+            "source_fragment" : "meta.readedValue < meta.minLVT"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "<",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "metadata.readedValue"]
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "metadata.minLVT"]
+              }
+            }
+          },
+          "true_next" : "tbl_act_3",
+          "false_next" : "node_11"
+        },
+        {
+          "name" : "node_11",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 180,
+            "column" : 15,
+            "source_fragment" : "meta.minLVT != meta.currentGVT"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "metadata.minLVT"]
+              },
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "metadata.currentGVT"]
+              }
+            }
+          },
+          "true_next" : "tbl_act_4",
+          "false_next" : "node_16"
+        },
+        {
+          "name" : "node_14",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "basic.p4",
+            "line" : 191,
+            "column" : 18,
             "source_fragment" : "hdr.gvt.type == TYPE_REQ"
           },
           "expression" : {
@@ -1190,14 +1239,14 @@
             }
           },
           "true_next" : "tbl_start_round",
-          "false_next" : "node_12"
+          "false_next" : "node_16"
         },
         {
-          "name" : "node_12",
-          "id" : 4,
+          "name" : "node_16",
+          "id" : 6,
           "source_info" : {
             "filename" : "basic.p4",
-            "line" : 211,
+            "line" : 196,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid()"
           },
@@ -1222,79 +1271,14 @@
       "id" : 1,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 221,
+        "line" : 206,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
-      "init_table" : "node_16",
-      "tables" : [
-        {
-          "name" : "MyEgress.map_ethernet",
-          "id" : 7,
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 235,
-            "column" : 10,
-            "source_fragment" : "map_ethernet"
-          },
-          "key" : [
-            {
-              "match_type" : "exact",
-              "name" : "standard_metadata.egress_port",
-              "target" : ["standard_metadata", "egress_port"],
-              "mask" : null
-            }
-          ],
-          "match_type" : "exact",
-          "type" : "simple",
-          "max_size" : 1024,
-          "with_counters" : false,
-          "support_timeout" : false,
-          "direct_meters" : null,
-          "action_ids" : [11, 10],
-          "actions" : ["MyEgress.ethernetMap", "NoAction"],
-          "base_default_next" : null,
-          "next_tables" : {
-            "MyEgress.ethernetMap" : null,
-            "NoAction" : null
-          },
-          "default_entry" : {
-            "action_id" : 10,
-            "action_const" : false,
-            "action_data" : [],
-            "action_entry_const" : false
-          }
-        }
-      ],
+      "init_table" : null,
+      "tables" : [],
       "action_profiles" : [],
-      "conditionals" : [
-        {
-          "name" : "node_16",
-          "id" : 5,
-          "source_info" : {
-            "filename" : "basic.p4",
-            "line" : 249,
-            "column" : 9,
-            "source_fragment" : "hdr.gvt.type == TYPE_DEL"
-          },
-          "expression" : {
-            "type" : "expression",
-            "value" : {
-              "op" : "==",
-              "left" : {
-                "type" : "field",
-                "value" : ["gvt", "type"]
-              },
-              "right" : {
-                "type" : "hexstr",
-                "value" : "0x00001313"
-              }
-            }
-          },
-          "false_next" : null,
-          "true_next" : "MyEgress.map_ethernet"
-        }
-      ]
+      "conditionals" : []
     }
   ],
   "checksums" : [
@@ -1303,7 +1287,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "basic.p4",
-        "line" : 261,
+        "line" : 218,
         "column" : 5,
         "source_fragment" : "update_checksum( ..."
       },

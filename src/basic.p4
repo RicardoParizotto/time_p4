@@ -55,8 +55,9 @@ header gvt_t{
 
 struct metadata {
     bit<32> readedValue;
-    bit<32> minPropose;
+    bit<32> currentGVT;
     bit<32> numProposals;
+    bit<32> minLVT;
 }
 
 struct headers {
@@ -107,9 +108,9 @@ control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
     apply {  }
 }
 
-register<bit<32>>(TOTAL_NUMBER_OF_PROCESSES) proposerLastRound;
-register<bit<32>>(1) minProposal;
-register<bit<32>>(1) numProposalsPerRound;
+register<bit<32>>(TOTAL_NUMBER_OF_PROCESSES) LvtValues;
+register<bit<32>>(1) GVT;
+//register<bit<32>>(1) numProposalsPerRound;
 
 /*************************************************************************
 **************  I N G R E S S   P R O C E S S I N G   *******************
@@ -129,36 +130,17 @@ control MyIngress(inout headers hdr,
         hdr.ipv4.ttl = hdr.ipv4.ttl - 1;
     }
     
-    /*copies packet and send it for LPs */
-   action clonePacket(bit<32> session_id){
-     clone(CloneType.I2E, session_id);
-   }
 
-   action  multicast_request(){
-      /*cloning must be made for all lps in the simulation*/
-      /*TODO: start essential variables*/
-      clonePacket(0);
-        
-   }
-
-   action start_round(){
-      minProposal.write(0, INFINITE);
-      numProposalsPerRound.write(0,0);
-   }
-
-    action  receive_proposal(lpid_t lp, value_t proposedValue, round_t currentRound){
-      proposerLastRound.read(meta.readedValue, lp);
-      minProposal.read(meta.minPropose, 0);
-      numProposalsPerRound.read(meta.numProposals, 0);
+    action start_round(){
+      GVT.write(0, 0);
+      LvtValues.write(0, 0);
+      LvtValues.write(1, 0);
     }
 
-    action send_to_gvt_controller(egressSpec_t port){
-      /*loads the best gvt value into the header and send to the gvt controller*/
-      minProposal.read(hdr.gvt.value, 0);  
-      standard_metadata.egress_spec = port;
-      //hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-      //hdr.ethernet.dstAddr = dstAddr;
+    action multicast() {
+        standard_metadata.mcast_grp = 1;
     }
+
 
     table ipv4_lpm {
         key = {
@@ -172,42 +154,45 @@ control MyIngress(inout headers hdr,
         size = 1024;
         default_action = NoAction();
     }
-
-    table send_to_gvt_c {
-      key = {
-        meta.numProposals: exact;
-      }
-      actions = {
-        send_to_gvt_controller;        
-      }
-    }
     
     apply {
         /*we need to steer packets through different functions here*/
-
         if(hdr.gvt.type == TYPE_PROP){
-          receive_proposal(hdr.gvt.pid, hdr.gvt.value, hdr.gvt.round);  
-          /*if the readed value is different from the actual round, this means that its from a 
-          a different proposer. Otherwise there is a error because the process is proposing
-          multiple times in the same round.*/  
-          if(meta.readedValue != hdr.gvt.round){
-            proposerLastRound.write(hdr.gvt.pid, hdr.gvt.round);
-            if(hdr.gvt.value < meta.minPropose){
-              minProposal.write(0, hdr.gvt.value);
+          GVT.read(meta.currentGVT, 0);
+          /*if the value is equal to the GVT we dont need to check anything*/
+          if(meta.currentGVT <= hdr.gvt.value){
+            LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
+            meta.minLVT = hdr.gvt.value;
+
+
+            /*begin while*/
+            LvtValues.read(meta.readedValue, 0);
+            if(meta.readedValue < meta.minLVT){
+              meta.minLVT = meta.readedValue;
             }
-            meta.numProposals = meta.numProposals + 1;
-            numProposalsPerRound.write(0, meta.numProposals);
-            send_to_gvt_c.apply();
+
+            LvtValues.read(meta.readedValue, 1);
+            if(meta.readedValue < meta.minLVT){
+              meta.minLVT = meta.readedValue;
+            }
+            /*end `while`*/
+
+            if(meta.minLVT != meta.currentGVT){
+              GVT.write(0, meta.minLVT);
+              hdr.gvt.value = meta.minLVT;
+              multicast(); 
+            }
+
+            //meta.numProposals = meta.numProposals + 1;
+            //numProposalsPerRound.write(0, meta.numProposals);
+            //send_to_gvt_c.apply();
             /*TODO: else drop the packet*/
           }
-
-        }else if(hdr.gvt.type == TYPE_REQ){
+        } else if(hdr.gvt.type == TYPE_REQ){
           start_round();
-          /*TODO multicast request to LPs*/
-          //multicast_request();
         }
-        
-        /*TODO: deliver value */
+
+        /*TODO: deliver simulation packet to end host */
         if (hdr.ipv4.isValid()) {
           ipv4_lpm.apply();
         }
@@ -221,35 +206,7 @@ control MyIngress(inout headers hdr,
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
-    
-
-
-    action ethernetMap(macAddr_t dstAddr){
-      hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
-      hdr.ethernet.dstAddr = dstAddr;
-    }
-    /* the map_ethernet table will match the egress_port (session_id), that will rewrite the packet ethernet adress.
-    Such modification is necessary to not create bugs in the incoming of packets to the destiny.
-    */
-
-    table map_ethernet {
-        key = {
-            standard_metadata.egress_port : exact;
-        }
-        actions = {
-            ethernetMap;
-            NoAction;
-        }
-        size = 1024;
-        default_action = NoAction();
-    }
-    
-    apply {
-      /*isso aqui precisa fazer apenas para o multicast*/ 
-      if(hdr.gvt.type == TYPE_DEL){
-        map_ethernet.apply();   
-      }
-    } 
+    apply { } 
 }
 
 /*************************************************************************

@@ -24,48 +24,6 @@ tables {
   }
   size: 1024
 }
-tables {
-  preamble {
-    id: 33587170
-    name: "MyIngress.send_to_gvt_c"
-    alias: "send_to_gvt_c"
-  }
-  match_fields {
-    id: 1
-    name: "meta.numProposals"
-    bitwidth: 32
-    match_type: EXACT
-  }
-  action_refs {
-    id: 16798543
-  }
-  action_refs {
-    id: 16800567
-    annotations: "@defaultonly"
-    scope: DEFAULT_ONLY
-  }
-  size: 1024
-}
-tables {
-  preamble {
-    id: 33578675
-    name: "MyEgress.map_ethernet"
-    alias: "map_ethernet"
-  }
-  match_fields {
-    id: 1
-    name: "standard_metadata.egress_port"
-    bitwidth: 9
-    match_type: EXACT
-  }
-  action_refs {
-    id: 16814517
-  }
-  action_refs {
-    id: 16800567
-  }
-  size: 1024
-}
 actions {
   preamble {
     id: 16800567
@@ -106,40 +64,16 @@ actions {
 }
 actions {
   preamble {
-    id: 16835816
-    name: "MyIngress.receive_proposal"
-    alias: "receive_proposal"
-  }
-}
-actions {
-  preamble {
-    id: 16798543
-    name: "MyIngress.send_to_gvt_controller"
-    alias: "send_to_gvt_controller"
-  }
-  params {
-    id: 1
-    name: "port"
-    bitwidth: 9
-  }
-}
-actions {
-  preamble {
-    id: 16814517
-    name: "MyEgress.ethernetMap"
-    alias: "ethernetMap"
-  }
-  params {
-    id: 1
-    name: "dstAddr"
-    bitwidth: 48
+    id: 16839654
+    name: "MyIngress.multicast"
+    alias: "multicast"
   }
 }
 registers {
   preamble {
-    id: 369131191
-    name: "proposerLastRound"
-    alias: "proposerLastRound"
+    id: 369143022
+    name: "LvtValues"
+    alias: "LvtValues"
   }
   type_spec {
     bitstring {
@@ -152,24 +86,9 @@ registers {
 }
 registers {
   preamble {
-    id: 369144841
-    name: "minProposal"
-    alias: "minProposal"
-  }
-  type_spec {
-    bitstring {
-      bit {
-        bitwidth: 32
-      }
-    }
-  }
-  size: 1
-}
-registers {
-  preamble {
-    id: 369137913
-    name: "numProposalsPerRound"
-    alias: "numProposalsPerRound"
+    id: 369149067
+    name: "GVT"
+    alias: "GVT"
   }
   type_spec {
     bitstring {

@@ -41,16 +41,29 @@
         "dstAddr": "08:00:00:00:03:00",
         "port": 3
       }
-    },
+    }
+  ],
+  "multicast_group_entries" : [
     {
-       "table":"MyIngress.send_to_gvt_c",
-       "match":{
-	  "meta.numProposals": 2
+      "multicast_group_id" : 1,
+      "replicas" : [
+        {
+          "egress_port" : 1,
+          "instance" : 1
         },
-        "action_name": "MyIngress.send_to_gvt_controller",
-        "action_params": {
-             "port": 3
-         }	
+        {
+          "egress_port" : 2,
+          "instance" : 1
+        },
+        {
+          "egress_port" : 3,
+          "instance" : 1
+        },
+        {
+          "egress_port" : 4,
+          "instance" : 1
+        }
+      ]
     }
   ]
 }
