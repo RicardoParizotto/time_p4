@@ -53,6 +53,7 @@ struct metadata {
     bit<32> currentGVT;
     bit<32> numProposals;
     bit<32> minLVT;
+    bit<32> iterator;
 }
 
 struct headers {
