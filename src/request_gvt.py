@@ -4,11 +4,13 @@ import sys
 import socket
 import random
 import struct
+import threading
 
 from scapy.all import sendp, send, get_if_list, get_if_hwaddr
 from scapy.all import Packet
 from scapy.all import Ether, IP, UDP, TCP
 from proposalHeader import GvtProtocol
+from receive import *
 
 TYPE_PROP = 0x1919
 TYPE_REQ = 0x1515
@@ -16,6 +18,13 @@ TYPE_REQ = 0x1515
 
 TYPE_GVT = 0x666
 
+class receiveThread(threading.Thread):
+    def run(self):
+        ifaces = filter(lambda i: 'eth' in i, os.listdir('/sys/class/net/'))
+        iface = ifaces[0]
+        print "sniffing on %s" % iface
+        sys.stdout.flush()
+        sniff(iface = iface, prn = lambda x: handle_pkt(x))
 
 def get_if():
     ifs=get_if_list()

@@ -5,9 +5,9 @@ TYPE_GVT = 0x666
 TYPE_IPV4 = 0x800
 
 class GvtProtocol(Packet):
-    fields_desc = [    IntField("type", 0),
-					   IntField("pid", 0),
-                       IntField("lvt", 0),
+    fields_desc = [    IntField("flag", 0),
+                       IntField("value", 0),
+                       IntField("pid", 0),
 				       IntField("round", 0)]
 
 bind_layers(Ether, GvtProtocol, type=TYPE_GVT)

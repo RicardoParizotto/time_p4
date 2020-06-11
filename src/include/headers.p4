@@ -3,8 +3,11 @@ const bit<16> TYPE_GVT = 0x666;
 const bit<32> TYPE_PROP = 0x1919;
 const bit<32> TYPE_REQ = 0x1515;
 const bit<32> TYPE_DEL = 0x1313;
+const bit<32> TYPE_PREPARE = 0x3333;
+const bit<32> TYPE_PREPAREOK = 0x4444;
 
-#define TOTAL_NUMBER_OF_PROCESSES 2
+
+#define TOTAL_NUMBER_OF_PROCESSES 3
 #define INFINITE 1000000
 
 /*************************************************************************
@@ -43,8 +46,8 @@ header ipv4_t {
 
 header gvt_t{
     bit<32> type;
-    lpid_t pid;
     value_t value;
+    lpid_t pid;
     round_t round;
 }
 
@@ -54,6 +57,8 @@ struct metadata {
     bit<32> numProposals;
     bit<32> minLVT;
     bit<32> iterator;
+    bit<32> numPrepareOks;
+    bit<32> currentRound;
 }
 
 struct headers {
