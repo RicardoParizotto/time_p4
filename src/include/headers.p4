@@ -1,8 +1,9 @@
 const bit<16> TYPE_IPV4 = 0x800;
-const bit<16> TYPE_GVT = 0x666;
+const bit<16> TYPE_GVT = 0x600;
 const bit<32> TYPE_PROP = 0x1919;
-const bit<32> TYPE_REQ = 0x1515;
 const bit<32> TYPE_DEL = 0x1313;
+
+const bit<32> TYPE_REQ = 0x1515;
 const bit<32> TYPE_PREPARE = 0x3333;
 const bit<32> TYPE_PREPAREOK = 0x4444;
 
@@ -21,7 +22,7 @@ typedef bit<32> ip4Addr_t;
 /*GVT definitions*/
 typedef bit<32> lpid_t;
 typedef bit<32> value_t;
-typedef bit<32> round_t;
+//typedef bit<32> round_t;  
 
 header ethernet_t {
     macAddr_t dstAddr;
@@ -48,7 +49,6 @@ header gvt_t{
     bit<32> type;
     value_t value;
     lpid_t pid;
-    round_t round;
 }
 
 struct metadata {

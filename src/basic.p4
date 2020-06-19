@@ -10,8 +10,8 @@ control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
 
 register<bit<32>>(TOTAL_NUMBER_OF_PROCESSES) LvtValues;
 register<bit<32>>(1) GVT;
-register<bit<32>>(1) PrepareOk;
-register<bit<32>>(1) RoundNumber;
+//register<bit<32>>(1) PrepareOk;
+//register<bit<32>>(1) RoundNumber;
 
 control MyIngress(inout headers hdr,
                   inout metadata meta,
@@ -31,8 +31,8 @@ control MyIngress(inout headers hdr,
       GVT.write(0, 0);
       LvtValues.write(0, 0);
       LvtValues.write(1, 0);
-      PrepareOk.write(0, 0);
-      RoundNumber.write(0, 0);
+      //PrepareOk.write(0, 0);
+      //RoundNumber.write(0, 0);
     }
 
     action multicast() {
@@ -56,19 +56,14 @@ control MyIngress(inout headers hdr,
 
         if(hdr.gvt.isValid()){
           /*we need to steer packets through different functions here*/
-          if(hdr.gvt.type == TYPE_PROP){
+          if(hdr.gvt.type == TYPE_PROP && meta.iterator == 0){
             GVT.read(meta.currentGVT, 0);
             //TODO: check for round number
             /*check for conditions to start a new gvt computation*/
             if(meta.currentGVT < hdr.gvt.value){
-              PrepareOk.write(0, 0);   //start new values
-              RoundNumber.read(meta.currentRound, 0);
-              meta.currentRound = meta.currentRound + 1;
-              RoundNumber.write(0, meta.currentRound);
-              /*update the current process LVT value*/
               LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
-              hdr.gvt.round = meta.currentRound;
-              hdr.gvt.type = TYPE_PREPARE;
+              //trigger metadata to start GVT calculation
+              meta.iterator = 1;
               /*TODO: you could calculate if the new value would 
               create a new before before multicasting. It would prevent 2n messages... :)*/
               multicast();      
@@ -77,25 +72,11 @@ control MyIngress(inout headers hdr,
               we dont need to check anything, just drop it*/
               drop();
             }
-          } else if(hdr.gvt.type == TYPE_PREPAREOK){
-            /*updates PrepareOks number*/ 
-            PrepareOk.read(meta.numPrepareOks, 0);
-            meta.numPrepareOks = meta.numPrepareOks + 1;
-            PrepareOk.write(0, meta.numPrepareOks);
-            /*update the current process LVT value*/
-            LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
-            /*case is a sufficient number of prepare oks
-            (differs fromo paxos that requires 2f - 1)*/
-            if(meta.numPrepareOks == (TOTAL_NUMBER_OF_PROCESSES)){
-              //trigger metadata to start GVT calculation
-              meta.iterator = 1;
-            }
           } else if(hdr.gvt.type == TYPE_REQ){
             start_execution();
           }
 
-
-          if(meta.iterator > 0){            /*this condition is to start  */ 
+          if(meta.iterator > 0 ){  /*this condition is to start the GVT computation*/ 
             /*if is the first iteration*/ 
             if(meta.iterator == 1){
               LvtValues.read(meta.minLVT, 0); 
@@ -112,11 +93,13 @@ control MyIngress(inout headers hdr,
             meta.iterator = meta.iterator + 1;
             /*if it is the last iteration*/
             if(meta.iterator == TOTAL_NUMBER_OF_PROCESSES){
-              /*update GVT and multicast the new value for processes*/
-              GVT.write(0, meta.minLVT);
-              hdr.gvt.value = meta.minLVT;
-              hdr.gvt.type = TYPE_DEL;
-              multicast(); 
+              if(meta.currentGVT != meta.minLVT){
+                /*update GVT and multicast the new value for processes*/
+                GVT.write(0, meta.minLVT);
+                hdr.gvt.value = meta.minLVT;
+                hdr.gvt.type = TYPE_DEL;
+                multicast(); 
+              }
             }else{
               resubmit(meta);
             }

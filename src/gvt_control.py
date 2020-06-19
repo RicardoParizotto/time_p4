@@ -14,7 +14,7 @@ from receive import *
 
 TYPE_PROP = 0x1919
 TYPE_REQ = 0x1515
-TYPE_GVT = 0x666
+TYPE_GVT = 0x600
 TYPE_DEL = 0x1313
 TYPE_PREPARE = 0x3333;
 TYPE_PREPAREOK = 0x4444;
@@ -27,7 +27,6 @@ class gvtControl:
         self.addr = socket.gethostbyname(dest_ip)
         self.iface = get_if()
         self.pid = pid
-        self.round = 0
         self.dest_ip = dest_ip
         self.GVT_value = 0
         self.last_proposal = 0;
@@ -48,15 +47,9 @@ class gvtControl:
         sniff(iface = iface, prn = lambda x: self.handle_pkt(x))
 
     def handle_pkt(self, pkt):
-        if TCP in pkt and pkt[TCP].dport == 1234:
-           print "got a packet"
-        #pkt.show2()
         if GvtProtocol in pkt:
-            if pkt[GvtProtocol].flag == TYPE_PREPARE:
-                self.send_packet(flag_operation=TYPE_PREPAREOK, message_value=self.last_proposal, process_pid=self.pid, round_number=self.round)
-            elif pkt[GvtProtocol].flag == TYPE_DEL:
+            if pkt[GvtProtocol].flag == TYPE_DEL:
                 self.GVT_value = pkt[GvtProtocol].value
-                self.round = pkt[GvtProtocol].round
                 print "got new value: " + str(self.GVT_value)
 
         sys.stdout.flush()
@@ -74,11 +67,10 @@ class gvtControl:
         return iface
 
 
-    def send_packet(self, flag_operation, message_value, process_pid, round_number):
+    def send_packet(self, flag_operation, message_value, process_pid):
         pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
-        pkt = pkt / GvtProtocol(flag = flag_operation, value=message_value, pid = process_pid, round=round_number)
+        pkt = pkt / GvtProtocol(flag = flag_operation, value=message_value, pid = process_pid)
         pkt = pkt /IP(dst=self.addr) / TCP(dport=1234, sport=random.randint(49152,65535))
-        pkt.show2()
         sendp(pkt, iface=self.iface, verbose=False)
 
 
@@ -89,27 +81,16 @@ class gvtControl:
             print "sending on interface %s to %s" % (self.iface, str(self.addr))
             #TODO: We need to enforce the concurrency control here
             self.last_proposal = int(x)
-            self.send_packet(flag_operation=TYPE_PROP, message_value=int(x), process_pid=self.pid, round_number=self.round)
+            self.send_packet(flag_operation=TYPE_PROP, message_value=int(x), process_pid=self.pid)
 
 def main():
     
     if len(sys.argv)<3:
+        #TODO: Does not make sense this Dest IP. Solve it 
         print 'pass 2 arguments: <destination_ip> <pid>'
         exit(1)
 
     GVTcontrol_instance = gvtControl(sys.argv[1], int(sys.argv[2]))
-
-    #thread to receive new GVT values    
-
-    #while True:
-    #    x = input('Type new LVT:')
-    #    print "sending on interface %s to %s" % (iface, str(addr))
-    #    pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
-    #    pkt = pkt / GvtProtocol(flag = TYPE_PROP, value=int(x), pid = int(sys.argv[2]), round=1)
-    #    pkt = pkt /IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535))
-    #    pkt.show2()
-    #    sendp(pkt, iface=iface, verbose=False)
-
 
 if __name__ == '__main__':
     main()
