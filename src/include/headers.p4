@@ -10,6 +10,7 @@ const bit<32> TYPE_PREPAREOK = 0x4444;
 
 #define TOTAL_NUMBER_OF_PROCESSES 3
 #define INFINITE 1000000
+#define MAJORITY 2
 
 /*************************************************************************
 *********************** H E A D E R S  ***********************************
@@ -48,7 +49,8 @@ header ipv4_t {
 header gvt_t{
     bit<32> type;
     value_t value;
-    lpid_t pid;
+    lpid_t  pid;
+    bit<32> round; 
 }
 
 struct metadata {
@@ -59,6 +61,7 @@ struct metadata {
     bit<32> iterator;
     bit<32> numPrepareOks;
     bit<32> currentRound;
+    egressSpec_t out_aux;
 }
 
 struct headers {
