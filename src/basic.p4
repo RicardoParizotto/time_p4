@@ -22,9 +22,8 @@ control MyIngress(inout headers hdr,
         mark_to_drop(standard_metadata);
     }
 
-    action answer_replica(){
-        primary_port.read(meta.out_aux, 0);
-        standard_metadata.egress_spec = meta.out_aux;  
+    action answer_replica(egressSpec_t port){
+        standard_metadata.egress_spec = port;  
     }
     
     action ipv4_forward(macAddr_t dstAddr, egressSpec_t port) {
@@ -58,19 +57,27 @@ control MyIngress(inout headers hdr,
         size = 1024;
         default_action = NoAction();
     }
+
+    table set_primary {
+    	key = {
+    		meta.iterator: exact;
+    	}
+    	actions = {
+			answer_replica;
+    	}
+    	size = 1;
+    }
     
     apply {
         if(hdr.gvt.isValid()){
-
-            if((hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0){
+            if ( (hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0){
 	            GVT.read(meta.currentGVT, 0);
-
            		/*check for conditions to start a new gvt computation*/
-           		if(meta.currentGVT < hdr.gvt.value){
+           		if (meta.currentGVT < hdr.gvt.value) {
                 	LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
                 	//trigger metadata to start GVT calculation
                		meta.iterator = 1;   
-            	}else{
+            	} else {
                 	/*If the value is less or equal to the GVT
                 	we dont need to check anything, just drop it*/
                 	drop();
@@ -78,11 +85,20 @@ control MyIngress(inout headers hdr,
 
         	} else if(hdr.gvt.type == TYPE_REQ){
             	start_execution();
-        	}
+
+        	} else if(hdr.gvt.type == TYPE_PREPAREOK){
+                RoundControl.read( meta.numPrepareOks, hdr.gvt.round);
+                meta.numPrepareOks = meta.numPrepareOks + 1;
+                RoundControl.write (hdr.gvt.round, meta.numPrepareOks);
+         	    if(meta.numPrepareOks >= MAJORITY){
+         	    	hdr.gvt.type = TYPE_DEL;
+         	    	GVT.read(hdr.gvt.value, 0);
+         	   	    multicast(1);
+         	    }
+            }
 
         	/*this condition is to start the GVT computation*/ 
-        	if(meta.iterator > 0 ){ 
-            	
+        	if(meta.iterator > 0 ){     	
 				/*if is the first iteration*/
 	            if(meta.iterator == 1){
 	              LvtValues.read(meta.minLVT, 0); 
@@ -107,36 +123,31 @@ control MyIngress(inout headers hdr,
 
                     /*update GVT and multicast the new value for replicas*/
                     GVT.write(0, meta.minLVT);
-                    hdr.gvt.type = TYPE_DEL;
 
                     if (hdr.gvt.type == TYPE_PREPARE){
                     	hdr.gvt.type = TYPE_PREPAREOK;
-                    	answer_replica();
-                    } else {
-                        /*the other case is the hdr.gvt.value is propose*/
-                    	hdr.gvt.type = TYPE_PREPAREOK;
-                    	multicast(1); 
+                    	set_primary.apply();
+                    } else { /*the other case is the hdr.gvt.value is propose*/
+                        /*append round number to the header and reset the history of PREPAREOKS*/
+                        RoundNumber.read(meta.currentRound, 0);
+                        RoundNumber.write(0, meta.currentRound + 1);
+                        hdr.gvt.round = meta.currentRound + 1;
+                    	hdr.gvt.type = TYPE_PREPARE;
+                    	/*send for replicas*/
+                    	multicast(2); 
                     }
+
             	} else {
                 	resubmit(meta); 
             	}
-       		} 
-            if(hdr.gvt.type == TYPE_PREPAREOK){
-                RoundControl.read( meta.numPrepareOks, hdr.gvt.round);
-                meta.numPrepareOks = meta.numPrepareOks + 1;
-                RoundControl.write (hdr.gvt.round, meta.numPrepareOks);
-         	    if(meta.numPrepareOks >= MAJORITY){
-         	    	hdr.gvt.type = TYPE_DEL;
-         	    	GVT.read(hdr.gvt.value, 0);
-         	   	    multicast(2);
-         	    }
-            }
+       		}
         }
 
         /*TODO: deliver packet to end host */
+        /*
         if (hdr.ipv4.isValid()) {
             ipv4_lpm.apply();
-        }
+        }*/
     }
 }
 
