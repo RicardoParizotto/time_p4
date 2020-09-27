@@ -3,6 +3,26 @@
   "p4info": "build/basic.p4.p4info.txt",
   "bmv2_json": "build/basic.json",
   "table_entries": [
+    {
+      "table": "MyIngress.send_probe_server",
+      "match": {
+        "hdr.gvt.pid": 1
+      },
+      "action_name": "MyIngress.send_probe",
+      "action_params": {
+        "port": 1
+      }
+    },
+    {
+      "table": "MyIngress.send_probe_server",
+      "match": {
+        "hdr.gvt.pid": 2
+      },
+      "action_name": "MyIngress.send_probe",
+      "action_params": {
+        "port": 2
+      }
+    }
   ],
   "multicast_group_entries" : [
     {
@@ -14,10 +34,6 @@
         },
         {
           "egress_port" : 2,
-          "instance" : 1
-        },
-        {
-          "egress_port" : 3,
           "instance" : 1
         }
       ]

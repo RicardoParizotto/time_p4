@@ -17,20 +17,27 @@ TYPE_PROP = 0x1919
 TYPE_REQ = 0x1515
 TYPE_GVT = 0x600
 TYPE_DEL = 0x1313
-TYPE_PREPARE = 0x3333;
-TYPE_PREPAREOK = 0x4444;
-
+TYPE_PREPARE = 0x3333
+TYPE_PREPAREOK = 0x4444
+TYPE_STARTCHANGE = 0x4343
+TYPE_STARTVIEW = 0x4747
+TYPE_FAILURE = 0x5555
+TYPE_DELFAILURE = 0x6666
+TYPE_VIEWCHANGE = 0x700
 
 class gvtControl:
     def __init__(self, dest_ip, pid):
         #creates socket to a destination 
         self.addr = socket.gethostbyname(dest_ip)
-        self.iface = get_if()
+        self.iface = self.get_if()
         self.pid = pid
         self.dest_ip = dest_ip
         self.GVT_value = 0
-        self.last_proposal = 0;
-        self.last_proposal_time = 0;
+        self.last_proposal = 0
+        self.last_proposal_time = 0
+        self.leader_alive = 1
+        self.sent_but_not_yet_acknowledged = 0;
+        #interfaces
 
         #start receiver thread
         self.receivethread = threading.Thread(target=self.receiveThread)
@@ -41,6 +48,9 @@ class gvtControl:
         self.run_loop = threading.Thread(target=self.runThread)
         self.run_loop.start()
 
+        self.alive = threading.Thread(target=self.aliveThread)
+        self.alive.start()
+
 
     def receiveThread(self):
         ifaces = filter(lambda i: 'eth' in i, os.listdir('/sys/class/net/'))
@@ -49,19 +59,36 @@ class gvtControl:
         sys.stdout.flush()
         sniff(iface = iface, prn = lambda x: self.handle_pkt(x))
 
-
     def handle_pkt(self, pkt):
         if GvtProtocol in pkt:
+            #delivering new GVT value for the server
             if pkt[GvtProtocol].flag == TYPE_DEL:
                 self.GVT_value = pkt[GvtProtocol].value
                 print "got new value: " + str(self.GVT_value)
                 print "time: " + str(time.time() - self.last_proposal_time)
                 #what should i do with this new value?
+                if pkt[GvtProtocol].pid == self.pid:
+                    self.sent_but_not_yet_acknowledged = 0
+            elif pkt[GvtProtocol].flag == TYPE_DELFAILURE:
+                self.leader_alive = 1
+            elif pkt[GvtProtocol].flag ==  TYPE_STARTVIEW:
+                #RESEND PACKETS for packet sent but not yet received
+                self.send_packet(flag_operation=TYPE_PROP, message_value=int(sent_but_not_yet_acknowledged), process_pid=self.pid)
         sys.stdout.flush()
 
+    def change_interface(self):
+        print('teste4:' + str(self.ifs))
+        for i in self.ifs:
+            if i:
+                print('teste2')
+                self.iface = i
+                self.ifs.remove(i)
+                break
+            print('teste3')
 
-    def get_if():
-        ifs=get_if_list()
+    def get_if(self):
+        self.ifs=get_if_list()
+        print(self.ifs)
         iface=None # "h1-eth0"
         for i in get_if_list():
             if "eth0" in i:
@@ -70,12 +97,16 @@ class gvtControl:
         if not iface:
             print "Cannot find eth0 interface"
             exit(1)
+        self.ifs.remove('lo')
+        self.ifs.remove('eth0')
+        print(self.ifs)
         return iface
 
     def send_packet(self, flag_operation, message_value, process_pid):
         pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
         pkt = pkt / GvtProtocol(flag = flag_operation, value=message_value, pid = process_pid)
         pkt = pkt /IP(dst=self.addr) / TCP(dport=1234, sport=random.randint(49152,65535))
+        self.sent_but_not_yet_acknowledged = message_value  
         sendp(pkt, iface=self.iface, verbose=False)
 
     def build_proposal(self, proposal_value):
@@ -90,6 +121,29 @@ class gvtControl:
             #TODO: We need to enforce the concurrency control here
             self.last_proposal_time = time.time()
             self.build_proposal(proposal_value=value)
+
+    def aliveThread(self):
+        while True:
+            time.sleep(5)
+            if(self.leader_alive == 1):
+                pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
+                pkt = pkt / GvtProtocol(flag = TYPE_FAILURE, value=0, pid= self.pid)
+                sendp(pkt, iface=self.iface, verbose=False)
+                #need semaphor?
+                self.leader_alive = 0
+                print(self.leader_alive)
+                print(self.iface)
+                print(self.ifs)
+            else:
+                #trigger recovery...
+                #TODO: muda iface para enviar
+                self.change_interface() 
+                self.leader_alive = 1 #necessario para nao entrar nessa condicao logo que o novo leader e escolhido
+                print('teste')
+                #envia pacote de start changeS
+                pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
+                pkt = pkt / GvtProtocol(flag = TYPE_VIEWCHANGE, value=0, pid= self.pid)
+                sendp(pkt, iface=self.iface, verbose=False) 
 
 def main():    
     if len(sys.argv)<3:

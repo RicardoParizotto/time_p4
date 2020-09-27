@@ -1,0 +1,1606 @@
+Calling target program-options parser
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act': act - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'MyIngress.send_probe_server': NoAction - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_0': act_1 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_1': act_0 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_drop': MyIngress.drop - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_start_execution': MyIngress.start_execution - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_2': act_3 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_3': act_2 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_multicast': MyIngress.multicast - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_4': act_4 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_multicast_0': MyIngress.multicast - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_5': act_6 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_multicast_1': MyIngress.multicast - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_6': act_5 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_7': act_7 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_8': act_9 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_9': act_8 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_10': act_14 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_11': act_12 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_12': act_10 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'MyIngress.set_primary': NoAction - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_13': act_11 - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_multicast_2': MyIngress.multicast - 
+[16:58:08.201] [bmv2] [D] [thread 28113] Set default default entry for table 'tbl_act_14': act_13 - 
+Adding interface s3-eth1 as port 1
+[16:58:08.202] [bmv2] [D] [thread 28113] Adding interface s3-eth1 as port 1
+Adding interface s3-eth2 as port 2
+[16:58:08.235] [bmv2] [D] [thread 28113] Adding interface s3-eth2 as port 2
+Adding interface s3-eth4 as port 4
+[16:58:08.259] [bmv2] [D] [thread 28113] Adding interface s3-eth4 as port 4
+Adding interface s3-eth5 as port 5
+[16:58:08.291] [bmv2] [D] [thread 28113] Adding interface s3-eth5 as port 5
+I0927 16:58:08.323868125   28113 server_builder.cc:247]      Synchronous server. Num CQs: 1, Min pollers: 1, Max Pollers: 2147483647, CQ timeout (msec): 1000
+Server listening on 0.0.0.0:50053
+[16:58:08.332] [bmv2] [I] [thread 28113] Starting Thrift server on port 9092
+[16:58:08.333] [bmv2] [I] [thread 28113] Thrift server was started
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Processing packet received on port 5
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Parser 'parser': start
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.552] [bmv2] [T] [thread 28120] [0.0] [cxt 0] Bytes parsed: 14
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Parser 'parser': end
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.552] [bmv2] [T] [thread 28120] [0.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.552] [bmv2] [D] [thread 28120] [0.0] [cxt 0] Egress port is 0
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Processing packet received on port 5
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Parser 'parser': start
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.552] [bmv2] [T] [thread 28120] [1.0] [cxt 0] Bytes parsed: 14
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Parser 'parser': end
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.552] [bmv2] [T] [thread 28120] [1.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.552] [bmv2] [D] [thread 28120] [1.0] [cxt 0] Egress port is 0
+[16:58:08.552] [bmv2] [D] [thread 28121] [0.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.552] [bmv2] [D] [thread 28121] [0.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.552] [bmv2] [D] [thread 28121] [0.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.552] [bmv2] [T] [thread 28121] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.552] [bmv2] [D] [thread 28121] [0.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.552] [bmv2] [D] [thread 28121] [0.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.553] [bmv2] [D] [thread 28121] [1.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.553] [bmv2] [D] [thread 28121] [1.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.553] [bmv2] [D] [thread 28121] [1.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.553] [bmv2] [T] [thread 28121] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.553] [bmv2] [D] [thread 28121] [1.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.553] [bmv2] [D] [thread 28121] [1.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.553] [bmv2] [D] [thread 28125] [0.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:08.553] [bmv2] [D] [thread 28125] [1.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Processing packet received on port 1
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Parser 'parser': start
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.566] [bmv2] [T] [thread 28120] [2.0] [cxt 0] Bytes parsed: 14
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Parser 'parser': end
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.566] [bmv2] [T] [thread 28120] [2.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.566] [bmv2] [D] [thread 28120] [2.0] [cxt 0] Egress port is 0
+[16:58:08.567] [bmv2] [D] [thread 28121] [2.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.567] [bmv2] [D] [thread 28121] [2.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.567] [bmv2] [D] [thread 28121] [2.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.567] [bmv2] [T] [thread 28121] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.567] [bmv2] [D] [thread 28121] [2.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.567] [bmv2] [D] [thread 28121] [2.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.567] [bmv2] [D] [thread 28125] [2.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Processing packet received on port 2
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Parser 'parser': start
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.574] [bmv2] [T] [thread 28120] [3.0] [cxt 0] Bytes parsed: 14
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Parser 'parser': end
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.574] [bmv2] [T] [thread 28120] [3.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.574] [bmv2] [D] [thread 28120] [3.0] [cxt 0] Egress port is 0
+[16:58:08.574] [bmv2] [D] [thread 28121] [3.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.574] [bmv2] [D] [thread 28121] [3.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.574] [bmv2] [D] [thread 28121] [3.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.574] [bmv2] [T] [thread 28121] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.574] [bmv2] [D] [thread 28121] [3.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.574] [bmv2] [D] [thread 28121] [3.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.574] [bmv2] [D] [thread 28125] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Processing packet received on port 4
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Parser 'parser': start
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.816] [bmv2] [T] [thread 28120] [4.0] [cxt 0] Bytes parsed: 14
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Parser 'parser': end
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.816] [bmv2] [T] [thread 28120] [4.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.816] [bmv2] [D] [thread 28120] [4.0] [cxt 0] Egress port is 0
+[16:58:08.816] [bmv2] [D] [thread 28121] [4.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.816] [bmv2] [D] [thread 28121] [4.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.816] [bmv2] [D] [thread 28121] [4.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.816] [bmv2] [T] [thread 28121] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.816] [bmv2] [D] [thread 28121] [4.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.816] [bmv2] [D] [thread 28121] [4.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.816] [bmv2] [D] [thread 28125] [4.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Processing packet received on port 4
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Parser 'parser': start
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.865] [bmv2] [T] [thread 28120] [5.0] [cxt 0] Bytes parsed: 14
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Parser 'parser': end
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.865] [bmv2] [T] [thread 28120] [5.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.865] [bmv2] [D] [thread 28120] [5.0] [cxt 0] Egress port is 0
+[16:58:08.865] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Processing packet received on port 4
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Parser 'parser': start
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Extracting header 'ethernet'
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:08.866] [bmv2] [T] [thread 28120] [6.0] [cxt 0] Bytes parsed: 14
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Parser 'parser': end
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Pipeline 'ingress': start
+[16:58:08.866] [bmv2] [T] [thread 28120] [6.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Pipeline 'ingress': end
+[16:58:08.866] [bmv2] [D] [thread 28120] [6.0] [cxt 0] Egress port is 0
+[16:58:08.866] [bmv2] [D] [thread 28121] [5.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.866] [bmv2] [D] [thread 28121] [5.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.866] [bmv2] [D] [thread 28121] [5.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.866] [bmv2] [T] [thread 28121] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.866] [bmv2] [D] [thread 28121] [5.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.866] [bmv2] [D] [thread 28121] [5.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.866] [bmv2] [D] [thread 28121] [6.0] [cxt 0] Pipeline 'egress': start
+[16:58:08.866] [bmv2] [D] [thread 28121] [6.0] [cxt 0] Pipeline 'egress': end
+[16:58:08.866] [bmv2] [D] [thread 28121] [6.0] [cxt 0] Deparser 'deparser': start
+[16:58:08.866] [bmv2] [T] [thread 28121] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:08.866] [bmv2] [D] [thread 28121] [6.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:08.866] [bmv2] [D] [thread 28121] [6.0] [cxt 0] Deparser 'deparser': end
+[16:58:08.866] [bmv2] [D] [thread 28125] [5.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:08.866] [bmv2] [D] [thread 28125] [6.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:09.187] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Processing packet received on port 5
+[16:58:09.187] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Parser 'parser': start
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Extracting header 'ethernet'
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:09.188] [bmv2] [T] [thread 28120] [7.0] [cxt 0] Bytes parsed: 14
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Parser 'parser': end
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Pipeline 'ingress': start
+[16:58:09.188] [bmv2] [T] [thread 28120] [7.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Pipeline 'ingress': end
+[16:58:09.188] [bmv2] [D] [thread 28120] [7.0] [cxt 0] Egress port is 0
+[16:58:09.188] [bmv2] [D] [thread 28121] [7.0] [cxt 0] Pipeline 'egress': start
+[16:58:09.188] [bmv2] [D] [thread 28121] [7.0] [cxt 0] Pipeline 'egress': end
+[16:58:09.188] [bmv2] [D] [thread 28121] [7.0] [cxt 0] Deparser 'deparser': start
+[16:58:09.188] [bmv2] [T] [thread 28121] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:09.188] [bmv2] [D] [thread 28121] [7.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:09.188] [bmv2] [D] [thread 28121] [7.0] [cxt 0] Deparser 'deparser': end
+[16:58:09.188] [bmv2] [D] [thread 28125] [7.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Processing packet received on port 4
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Parser 'parser': start
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Extracting header 'ethernet'
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:09.331] [bmv2] [T] [thread 28120] [8.0] [cxt 0] Bytes parsed: 14
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Parser 'parser': end
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Pipeline 'ingress': start
+[16:58:09.331] [bmv2] [T] [thread 28120] [8.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Pipeline 'ingress': end
+[16:58:09.331] [bmv2] [D] [thread 28120] [8.0] [cxt 0] Egress port is 0
+[16:58:09.331] [bmv2] [D] [thread 28121] [8.0] [cxt 0] Pipeline 'egress': start
+[16:58:09.331] [bmv2] [D] [thread 28121] [8.0] [cxt 0] Pipeline 'egress': end
+[16:58:09.331] [bmv2] [D] [thread 28121] [8.0] [cxt 0] Deparser 'deparser': start
+[16:58:09.331] [bmv2] [T] [thread 28121] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:09.331] [bmv2] [D] [thread 28121] [8.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:09.331] [bmv2] [D] [thread 28121] [8.0] [cxt 0] Deparser 'deparser': end
+[16:58:09.331] [bmv2] [D] [thread 28125] [8.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Processing packet received on port 5
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Parser 'parser': start
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Extracting header 'ethernet'
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:09.451] [bmv2] [T] [thread 28120] [9.0] [cxt 0] Bytes parsed: 14
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Parser 'parser': end
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Pipeline 'ingress': start
+[16:58:09.451] [bmv2] [T] [thread 28120] [9.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Pipeline 'ingress': end
+[16:58:09.451] [bmv2] [D] [thread 28120] [9.0] [cxt 0] Egress port is 0
+[16:58:09.451] [bmv2] [D] [thread 28121] [9.0] [cxt 0] Pipeline 'egress': start
+[16:58:09.451] [bmv2] [D] [thread 28121] [9.0] [cxt 0] Pipeline 'egress': end
+[16:58:09.451] [bmv2] [D] [thread 28121] [9.0] [cxt 0] Deparser 'deparser': start
+[16:58:09.451] [bmv2] [T] [thread 28121] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:09.451] [bmv2] [D] [thread 28121] [9.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:09.451] [bmv2] [D] [thread 28121] [9.0] [cxt 0] Deparser 'deparser': end
+[16:58:09.452] [bmv2] [D] [thread 28125] [9.0] [cxt 0] Transmitting packet of size 90 out of port 0
+New connection
+P4Runtime SetForwardingPipelineConfig
+[16:58:09.767] [bmv2] [W] [thread 28148] [P4Runtime] p4::tmp::P4DeviceConfig is deprecated
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act': act - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'MyIngress.send_probe_server': NoAction - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_0': act_1 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_1': act_0 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_drop': MyIngress.drop - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_start_execution': MyIngress.start_execution - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_2': act_3 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_3': act_2 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_multicast': MyIngress.multicast - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_4': act_4 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_multicast_0': MyIngress.multicast - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_5': act_6 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_multicast_1': MyIngress.multicast - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_6': act_5 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_7': act_7 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_8': act_9 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_9': act_8 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_10': act_14 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_11': act_12 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_12': act_10 - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'MyIngress.set_primary': NoAction - 
+[16:58:09.771] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_13': act_11 - 
+[16:58:09.772] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_multicast_2': MyIngress.multicast - 
+[16:58:09.772] [bmv2] [D] [thread 28148] Set default default entry for table 'tbl_act_14': act_13 - 
+P4Runtime Write
+device_id: 2
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33611871
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 16822165
+          params {
+            param_id: 1
+            value: "\000\004"
+          }
+        }
+      }
+    }
+  }
+}
+[16:58:09.779] [bmv2] [D] [thread 28148] Entry 0 added to table 'MyIngress.set_primary'
+[16:58:09.779] [bmv2] [D] [thread 28148] Dumping entry 0
+Match key:
+* meta.iterator       : EXACT     00000002
+Action entry: MyIngress.answer_replica - 4,
+
+P4Runtime Write
+device_id: 2
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33561363
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\001"
+        }
+      }
+      action {
+        action {
+          action_id: 16819453
+          params {
+            param_id: 1
+            value: "\000\001"
+          }
+        }
+      }
+    }
+  }
+}
+[16:58:09.781] [bmv2] [D] [thread 28148] Entry 0 added to table 'MyIngress.send_probe_server'
+[16:58:09.781] [bmv2] [D] [thread 28148] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+P4Runtime Write
+device_id: 2
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33561363
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 16819453
+          params {
+            param_id: 1
+            value: "\000\002"
+          }
+        }
+      }
+    }
+  }
+}
+[16:58:09.784] [bmv2] [D] [thread 28148] Entry 1 added to table 'MyIngress.send_probe_server'
+[16:58:09.784] [bmv2] [D] [thread 28148] Dumping entry 1
+Match key:
+* hdr.gvt.pid         : EXACT     00000002
+Action entry: MyIngress.send_probe - 2,
+
+P4Runtime Write
+device_id: 2
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    packet_replication_engine_entry {
+      multicast_group_entry {
+        multicast_group_id: 1
+        replicas {
+          egress_port: 1
+          instance: 1
+        }
+        replicas {
+          egress_port: 2
+          instance: 1
+        }
+      }
+    }
+  }
+}
+[16:58:09.785] [bmv2] [D] [thread 28148] mgrp node created for mgid 1
+[16:58:09.785] [bmv2] [D] [thread 28148] node created for rid 1
+[16:58:09.785] [bmv2] [D] [thread 28148] node associated with mgid 1
+P4Runtime Write
+device_id: 2
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    packet_replication_engine_entry {
+      multicast_group_entry {
+        multicast_group_id: 2
+        replicas {
+          egress_port: 4
+          instance: 1
+        }
+        replicas {
+          egress_port: 5
+          instance: 1
+        }
+      }
+    }
+  }
+}
+[16:58:09.787] [bmv2] [D] [thread 28148] mgrp node created for mgid 2
+[16:58:09.787] [bmv2] [D] [thread 28148] node created for rid 1
+[16:58:09.787] [bmv2] [D] [thread 28148] node associated with mgid 2
+Connection removed
+[16:58:11.831] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Processing packet received on port 2
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Parser 'parser': start
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Extracting header 'ethernet'
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:11.893] [bmv2] [T] [thread 28120] [10.0] [cxt 0] Bytes parsed: 14
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Parser 'parser': end
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Pipeline 'ingress': start
+[16:58:11.893] [bmv2] [T] [thread 28120] [10.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Pipeline 'ingress': end
+[16:58:11.893] [bmv2] [D] [thread 28120] [10.0] [cxt 0] Egress port is 0
+[16:58:11.894] [bmv2] [D] [thread 28121] [10.0] [cxt 0] Pipeline 'egress': start
+[16:58:11.894] [bmv2] [D] [thread 28121] [10.0] [cxt 0] Pipeline 'egress': end
+[16:58:11.894] [bmv2] [D] [thread 28121] [10.0] [cxt 0] Deparser 'deparser': start
+[16:58:11.894] [bmv2] [T] [thread 28121] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:11.894] [bmv2] [D] [thread 28121] [10.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:11.894] [bmv2] [D] [thread 28121] [10.0] [cxt 0] Deparser 'deparser': end
+[16:58:11.894] [bmv2] [D] [thread 28125] [10.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Processing packet received on port 1
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Parser 'parser': start
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Extracting header 'ethernet'
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:12.043] [bmv2] [T] [thread 28120] [11.0] [cxt 0] Bytes parsed: 14
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Parser 'parser': end
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Pipeline 'ingress': start
+[16:58:12.043] [bmv2] [T] [thread 28120] [11.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Pipeline 'ingress': end
+[16:58:12.043] [bmv2] [D] [thread 28120] [11.0] [cxt 0] Egress port is 0
+[16:58:12.043] [bmv2] [D] [thread 28121] [11.0] [cxt 0] Pipeline 'egress': start
+[16:58:12.043] [bmv2] [D] [thread 28121] [11.0] [cxt 0] Pipeline 'egress': end
+[16:58:12.043] [bmv2] [D] [thread 28121] [11.0] [cxt 0] Deparser 'deparser': start
+[16:58:12.043] [bmv2] [T] [thread 28121] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:12.043] [bmv2] [D] [thread 28121] [11.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:12.043] [bmv2] [D] [thread 28121] [11.0] [cxt 0] Deparser 'deparser': end
+[16:58:12.043] [bmv2] [D] [thread 28125] [11.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Processing packet received on port 5
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Parser 'parser': start
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Extracting header 'ethernet'
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:12.215] [bmv2] [T] [thread 28120] [12.0] [cxt 0] Bytes parsed: 14
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Parser 'parser': end
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Pipeline 'ingress': start
+[16:58:12.215] [bmv2] [T] [thread 28120] [12.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Pipeline 'ingress': end
+[16:58:12.215] [bmv2] [D] [thread 28120] [12.0] [cxt 0] Egress port is 0
+[16:58:12.215] [bmv2] [D] [thread 28121] [12.0] [cxt 0] Pipeline 'egress': start
+[16:58:12.216] [bmv2] [D] [thread 28121] [12.0] [cxt 0] Pipeline 'egress': end
+[16:58:12.216] [bmv2] [D] [thread 28121] [12.0] [cxt 0] Deparser 'deparser': start
+[16:58:12.216] [bmv2] [T] [thread 28121] [12.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:12.216] [bmv2] [D] [thread 28121] [12.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:12.216] [bmv2] [D] [thread 28121] [12.0] [cxt 0] Deparser 'deparser': end
+[16:58:12.216] [bmv2] [D] [thread 28125] [12.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Processing packet received on port 4
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Parser 'parser': start
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Extracting header 'ethernet'
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:12.296] [bmv2] [T] [thread 28120] [13.0] [cxt 0] Bytes parsed: 14
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Parser 'parser': end
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Pipeline 'ingress': start
+[16:58:12.296] [bmv2] [T] [thread 28120] [13.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Pipeline 'ingress': end
+[16:58:12.296] [bmv2] [D] [thread 28120] [13.0] [cxt 0] Egress port is 0
+[16:58:12.296] [bmv2] [D] [thread 28121] [13.0] [cxt 0] Pipeline 'egress': start
+[16:58:12.296] [bmv2] [D] [thread 28121] [13.0] [cxt 0] Pipeline 'egress': end
+[16:58:12.296] [bmv2] [D] [thread 28121] [13.0] [cxt 0] Deparser 'deparser': start
+[16:58:12.296] [bmv2] [T] [thread 28121] [13.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:12.296] [bmv2] [D] [thread 28121] [13.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:12.296] [bmv2] [D] [thread 28121] [13.0] [cxt 0] Deparser 'deparser': end
+[16:58:12.297] [bmv2] [D] [thread 28125] [13.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Processing packet received on port 5
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Parser 'parser': start
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Extracting header 'ethernet'
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:12.559] [bmv2] [T] [thread 28120] [14.0] [cxt 0] Bytes parsed: 14
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Parser 'parser': end
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Pipeline 'ingress': start
+[16:58:12.559] [bmv2] [T] [thread 28120] [14.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Pipeline 'ingress': end
+[16:58:12.559] [bmv2] [D] [thread 28120] [14.0] [cxt 0] Egress port is 0
+[16:58:12.559] [bmv2] [D] [thread 28121] [14.0] [cxt 0] Pipeline 'egress': start
+[16:58:12.559] [bmv2] [D] [thread 28121] [14.0] [cxt 0] Pipeline 'egress': end
+[16:58:12.559] [bmv2] [D] [thread 28121] [14.0] [cxt 0] Deparser 'deparser': start
+[16:58:12.559] [bmv2] [T] [thread 28121] [14.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:12.559] [bmv2] [D] [thread 28121] [14.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:12.559] [bmv2] [D] [thread 28121] [14.0] [cxt 0] Deparser 'deparser': end
+[16:58:12.560] [bmv2] [D] [thread 28125] [14.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Processing packet received on port 4
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Parser 'parser': start
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Extracting header 'ethernet'
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:12.872] [bmv2] [T] [thread 28120] [15.0] [cxt 0] Bytes parsed: 14
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Parser 'parser': end
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Pipeline 'ingress': start
+[16:58:12.872] [bmv2] [T] [thread 28120] [15.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Pipeline 'ingress': end
+[16:58:12.872] [bmv2] [D] [thread 28120] [15.0] [cxt 0] Egress port is 0
+[16:58:12.873] [bmv2] [D] [thread 28121] [15.0] [cxt 0] Pipeline 'egress': start
+[16:58:12.873] [bmv2] [D] [thread 28121] [15.0] [cxt 0] Pipeline 'egress': end
+[16:58:12.873] [bmv2] [D] [thread 28121] [15.0] [cxt 0] Deparser 'deparser': start
+[16:58:12.873] [bmv2] [T] [thread 28121] [15.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:12.873] [bmv2] [D] [thread 28121] [15.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:12.873] [bmv2] [D] [thread 28121] [15.0] [cxt 0] Deparser 'deparser': end
+[16:58:12.873] [bmv2] [D] [thread 28125] [15.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Processing packet received on port 2
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Parser 'parser': start
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Extracting header 'ethernet'
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:15.843] [bmv2] [T] [thread 28120] [16.0] [cxt 0] Bytes parsed: 14
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Parser 'parser': end
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Pipeline 'ingress': start
+[16:58:15.843] [bmv2] [T] [thread 28120] [16.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Pipeline 'ingress': end
+[16:58:15.843] [bmv2] [D] [thread 28120] [16.0] [cxt 0] Egress port is 0
+[16:58:15.843] [bmv2] [D] [thread 28121] [16.0] [cxt 0] Pipeline 'egress': start
+[16:58:15.843] [bmv2] [D] [thread 28121] [16.0] [cxt 0] Pipeline 'egress': end
+[16:58:15.843] [bmv2] [D] [thread 28121] [16.0] [cxt 0] Deparser 'deparser': start
+[16:58:15.843] [bmv2] [T] [thread 28121] [16.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:15.843] [bmv2] [D] [thread 28121] [16.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:15.843] [bmv2] [D] [thread 28121] [16.0] [cxt 0] Deparser 'deparser': end
+[16:58:15.843] [bmv2] [D] [thread 28125] [16.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:16.055] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Processing packet received on port 1
+[16:58:16.055] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Parser 'parser': start
+[16:58:16.055] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Extracting header 'ethernet'
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:16.056] [bmv2] [T] [thread 28120] [17.0] [cxt 0] Bytes parsed: 14
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Parser 'parser': end
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Pipeline 'ingress': start
+[16:58:16.056] [bmv2] [T] [thread 28120] [17.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Pipeline 'ingress': end
+[16:58:16.056] [bmv2] [D] [thread 28120] [17.0] [cxt 0] Egress port is 0
+[16:58:16.056] [bmv2] [D] [thread 28121] [17.0] [cxt 0] Pipeline 'egress': start
+[16:58:16.056] [bmv2] [D] [thread 28121] [17.0] [cxt 0] Pipeline 'egress': end
+[16:58:16.056] [bmv2] [D] [thread 28121] [17.0] [cxt 0] Deparser 'deparser': start
+[16:58:16.056] [bmv2] [T] [thread 28121] [17.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:16.056] [bmv2] [D] [thread 28121] [17.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:16.056] [bmv2] [D] [thread 28121] [17.0] [cxt 0] Deparser 'deparser': end
+[16:58:16.057] [bmv2] [D] [thread 28125] [17.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Processing packet received on port 5
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Parser 'parser': start
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Extracting header 'ethernet'
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:16.227] [bmv2] [T] [thread 28120] [18.0] [cxt 0] Bytes parsed: 14
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Parser 'parser': end
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Pipeline 'ingress': start
+[16:58:16.227] [bmv2] [T] [thread 28120] [18.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Pipeline 'ingress': end
+[16:58:16.227] [bmv2] [D] [thread 28120] [18.0] [cxt 0] Egress port is 0
+[16:58:16.227] [bmv2] [D] [thread 28121] [18.0] [cxt 0] Pipeline 'egress': start
+[16:58:16.227] [bmv2] [D] [thread 28121] [18.0] [cxt 0] Pipeline 'egress': end
+[16:58:16.227] [bmv2] [D] [thread 28121] [18.0] [cxt 0] Deparser 'deparser': start
+[16:58:16.227] [bmv2] [T] [thread 28121] [18.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:16.227] [bmv2] [D] [thread 28121] [18.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:16.227] [bmv2] [D] [thread 28121] [18.0] [cxt 0] Deparser 'deparser': end
+[16:58:16.228] [bmv2] [D] [thread 28125] [18.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Processing packet received on port 4
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Parser 'parser': start
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Extracting header 'ethernet'
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:16.307] [bmv2] [T] [thread 28120] [19.0] [cxt 0] Bytes parsed: 14
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Parser 'parser': end
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Pipeline 'ingress': start
+[16:58:16.307] [bmv2] [T] [thread 28120] [19.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Pipeline 'ingress': end
+[16:58:16.307] [bmv2] [D] [thread 28120] [19.0] [cxt 0] Egress port is 0
+[16:58:16.307] [bmv2] [D] [thread 28121] [19.0] [cxt 0] Pipeline 'egress': start
+[16:58:16.307] [bmv2] [D] [thread 28121] [19.0] [cxt 0] Pipeline 'egress': end
+[16:58:16.307] [bmv2] [D] [thread 28121] [19.0] [cxt 0] Deparser 'deparser': start
+[16:58:16.307] [bmv2] [T] [thread 28121] [19.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:16.307] [bmv2] [D] [thread 28121] [19.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:16.307] [bmv2] [D] [thread 28121] [19.0] [cxt 0] Deparser 'deparser': end
+[16:58:16.307] [bmv2] [D] [thread 28125] [19.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Processing packet received on port 5
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Parser 'parser': start
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Extracting header 'ethernet'
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:16.567] [bmv2] [T] [thread 28120] [20.0] [cxt 0] Bytes parsed: 14
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Parser 'parser': end
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Pipeline 'ingress': start
+[16:58:16.567] [bmv2] [T] [thread 28120] [20.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Pipeline 'ingress': end
+[16:58:16.567] [bmv2] [D] [thread 28120] [20.0] [cxt 0] Egress port is 0
+[16:58:16.568] [bmv2] [D] [thread 28121] [20.0] [cxt 0] Pipeline 'egress': start
+[16:58:16.568] [bmv2] [D] [thread 28121] [20.0] [cxt 0] Pipeline 'egress': end
+[16:58:16.568] [bmv2] [D] [thread 28121] [20.0] [cxt 0] Deparser 'deparser': start
+[16:58:16.568] [bmv2] [T] [thread 28121] [20.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:16.568] [bmv2] [D] [thread 28121] [20.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:16.568] [bmv2] [D] [thread 28121] [20.0] [cxt 0] Deparser 'deparser': end
+[16:58:16.568] [bmv2] [D] [thread 28125] [20.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Processing packet received on port 4
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Parser 'parser': start
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Extracting header 'ethernet'
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Parser state 'start': key is 86dd
+[16:58:16.887] [bmv2] [T] [thread 28120] [21.0] [cxt 0] Bytes parsed: 14
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Parser 'parser': end
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Pipeline 'ingress': start
+[16:58:16.887] [bmv2] [T] [thread 28120] [21.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is false
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Pipeline 'ingress': end
+[16:58:16.887] [bmv2] [D] [thread 28120] [21.0] [cxt 0] Egress port is 0
+[16:58:16.888] [bmv2] [D] [thread 28121] [21.0] [cxt 0] Pipeline 'egress': start
+[16:58:16.888] [bmv2] [D] [thread 28121] [21.0] [cxt 0] Pipeline 'egress': end
+[16:58:16.888] [bmv2] [D] [thread 28121] [21.0] [cxt 0] Deparser 'deparser': start
+[16:58:16.888] [bmv2] [T] [thread 28121] [21.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[16:58:16.888] [bmv2] [D] [thread 28121] [21.0] [cxt 0] Deparsing header 'ethernet'
+[16:58:16.888] [bmv2] [D] [thread 28121] [21.0] [cxt 0] Deparser 'deparser': end
+[16:58:16.888] [bmv2] [D] [thread 28125] [21.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Processing packet received on port 1
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser 'parser': start
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Extracting header 'ethernet'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Bytes parsed: 14
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Extracting header 'gvt'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Bytes parsed: 30
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Parser 'parser': end
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Pipeline 'ingress': start
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Looking up key:
+
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Action entry is act_4 - 
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Action act_4
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Looking up key:
+
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:03.105] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] Action MyIngress.multicast
+[17:02:03.105] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:03.106] [bmv2] [T] [thread 28120] [22.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:03.106] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Pipeline 'ingress': end
+[17:02:03.106] [bmv2] [D] [thread 28120] [22.0] [cxt 0] Multicast requested for packet
+[17:02:03.106] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Processing packet received on port 1
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser 'parser': start
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Extracting header 'ethernet'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Bytes parsed: 14
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Extracting header 'gvt'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Bytes parsed: 30
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Parser 'parser': end
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Pipeline 'ingress': start
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Applying table 'tbl_act'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Looking up key:
+
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Table 'tbl_act': miss
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Action entry is act - 
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Action act
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:08.133] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:08.133] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:08.134] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:08.134] [bmv2] [T] [thread 28120] [23.0] [cxt 0] Action MyIngress.send_probe
+[17:02:08.134] [bmv2] [T] [thread 28120] [23.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:08.134] [bmv2] [T] [thread 28120] [23.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:08.134] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Pipeline 'ingress': end
+[17:02:08.134] [bmv2] [D] [thread 28120] [23.0] [cxt 0] Egress port is 1
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Pipeline 'egress': start
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Pipeline 'egress': end
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Deparser 'deparser': start
+[17:02:08.134] [bmv2] [T] [thread 28122] [23.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Deparsing header 'gvt'
+[17:02:08.134] [bmv2] [D] [thread 28122] [23.0] [cxt 0] Deparser 'deparser': end
+[17:02:08.134] [bmv2] [D] [thread 28125] [23.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Processing packet received on port 1
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser 'parser': start
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Extracting header 'ethernet'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Bytes parsed: 14
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Extracting header 'gvt'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Bytes parsed: 30
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Parser 'parser': end
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Pipeline 'ingress': start
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Looking up key:
+
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Action entry is act_4 - 
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Action act_4
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:13.162] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Looking up key:
+
+[17:02:13.162] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:13.163] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:13.163] [bmv2] [T] [thread 28120] [24.0] [cxt 0] Action MyIngress.multicast
+[17:02:13.163] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:13.163] [bmv2] [T] [thread 28120] [24.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:13.163] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Pipeline 'ingress': end
+[17:02:13.163] [bmv2] [D] [thread 28120] [24.0] [cxt 0] Multicast requested for packet
+[17:02:13.163] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Processing packet received on port 1
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser 'parser': start
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Extracting header 'ethernet'
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:18.189] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Bytes parsed: 14
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Extracting header 'gvt'
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:18.189] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Bytes parsed: 30
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Parser 'parser': end
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Pipeline 'ingress': start
+[17:02:18.189] [bmv2] [T] [thread 28120] [25.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:18.189] [bmv2] [T] [thread 28120] [25.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:18.189] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Applying table 'tbl_act'
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Looking up key:
+
+[17:02:18.189] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Table 'tbl_act': miss
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Action entry is act - 
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Action act
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] Action MyIngress.send_probe
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:18.190] [bmv2] [T] [thread 28120] [25.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Pipeline 'ingress': end
+[17:02:18.190] [bmv2] [D] [thread 28120] [25.0] [cxt 0] Egress port is 1
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Pipeline 'egress': start
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Pipeline 'egress': end
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Deparser 'deparser': start
+[17:02:18.190] [bmv2] [T] [thread 28122] [25.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Deparsing header 'gvt'
+[17:02:18.190] [bmv2] [D] [thread 28122] [25.0] [cxt 0] Deparser 'deparser': end
+[17:02:18.190] [bmv2] [D] [thread 28125] [25.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Processing packet received on port 1
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser 'parser': start
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Extracting header 'ethernet'
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Bytes parsed: 14
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Extracting header 'gvt'
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Bytes parsed: 30
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Parser 'parser': end
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Pipeline 'ingress': start
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Looking up key:
+
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:23.216] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Action entry is act_4 - 
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Action act_4
+[17:02:23.216] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:23.217] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:23.217] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:23.217] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Looking up key:
+
+[17:02:23.217] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:23.217] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:23.217] [bmv2] [T] [thread 28120] [26.0] [cxt 0] Action MyIngress.multicast
+[17:02:23.217] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:23.217] [bmv2] [T] [thread 28120] [26.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:23.217] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Pipeline 'ingress': end
+[17:02:23.217] [bmv2] [D] [thread 28120] [26.0] [cxt 0] Multicast requested for packet
+[17:02:23.217] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Processing packet received on port 1
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser 'parser': start
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Extracting header 'ethernet'
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Bytes parsed: 14
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Extracting header 'gvt'
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Bytes parsed: 30
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Parser 'parser': end
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Pipeline 'ingress': start
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Applying table 'tbl_act'
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Looking up key:
+
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Table 'tbl_act': miss
+[17:02:28.244] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Action entry is act - 
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Action act
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:28.244] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:28.245] [bmv2] [T] [thread 28120] [27.0] [cxt 0] Action MyIngress.send_probe
+[17:02:28.245] [bmv2] [T] [thread 28120] [27.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:28.245] [bmv2] [T] [thread 28120] [27.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Pipeline 'ingress': end
+[17:02:28.245] [bmv2] [D] [thread 28120] [27.0] [cxt 0] Egress port is 1
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Pipeline 'egress': start
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Pipeline 'egress': end
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Deparser 'deparser': start
+[17:02:28.245] [bmv2] [T] [thread 28122] [27.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Deparsing header 'gvt'
+[17:02:28.245] [bmv2] [D] [thread 28122] [27.0] [cxt 0] Deparser 'deparser': end
+[17:02:28.245] [bmv2] [D] [thread 28125] [27.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Processing packet received on port 1
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser 'parser': start
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Extracting header 'ethernet'
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Bytes parsed: 14
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Extracting header 'gvt'
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Bytes parsed: 30
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Parser 'parser': end
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Pipeline 'ingress': start
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:33.272] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:33.272] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Looking up key:
+
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Action entry is act_4 - 
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Action act_4
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Looking up key:
+
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] Action MyIngress.multicast
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:33.273] [bmv2] [T] [thread 28120] [28.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Pipeline 'ingress': end
+[17:02:33.273] [bmv2] [D] [thread 28120] [28.0] [cxt 0] Multicast requested for packet
+[17:02:33.273] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Processing packet received on port 1
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser 'parser': start
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Extracting header 'ethernet'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Bytes parsed: 14
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Extracting header 'gvt'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Bytes parsed: 30
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Parser 'parser': end
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Pipeline 'ingress': start
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Applying table 'tbl_act'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Looking up key:
+
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Table 'tbl_act': miss
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Action entry is act - 
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Action act
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:38.301] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:38.301] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:38.302] [bmv2] [T] [thread 28120] [29.0] [cxt 0] Action MyIngress.send_probe
+[17:02:38.302] [bmv2] [T] [thread 28120] [29.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:38.302] [bmv2] [T] [thread 28120] [29.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:38.302] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Pipeline 'ingress': end
+[17:02:38.302] [bmv2] [D] [thread 28120] [29.0] [cxt 0] Egress port is 1
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Pipeline 'egress': start
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Pipeline 'egress': end
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Deparser 'deparser': start
+[17:02:38.302] [bmv2] [T] [thread 28122] [29.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Deparsing header 'gvt'
+[17:02:38.302] [bmv2] [D] [thread 28122] [29.0] [cxt 0] Deparser 'deparser': end
+[17:02:38.302] [bmv2] [D] [thread 28125] [29.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Processing packet received on port 1
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser 'parser': start
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Extracting header 'ethernet'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Bytes parsed: 14
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Extracting header 'gvt'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Bytes parsed: 30
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Parser 'parser': end
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Pipeline 'ingress': start
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Looking up key:
+
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Action entry is act_4 - 
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Action act_4
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Looking up key:
+
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] Action MyIngress.multicast
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:43.331] [bmv2] [T] [thread 28120] [30.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Pipeline 'ingress': end
+[17:02:43.331] [bmv2] [D] [thread 28120] [30.0] [cxt 0] Multicast requested for packet
+[17:02:43.331] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Processing packet received on port 1
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser 'parser': start
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Extracting header 'ethernet'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Bytes parsed: 14
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Extracting header 'gvt'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Bytes parsed: 30
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Parser 'parser': end
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Pipeline 'ingress': start
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Applying table 'tbl_act'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Looking up key:
+
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Table 'tbl_act': miss
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Action entry is act - 
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Action act
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] Action MyIngress.send_probe
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:48.360] [bmv2] [T] [thread 28120] [31.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:48.360] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Pipeline 'ingress': end
+[17:02:48.361] [bmv2] [D] [thread 28120] [31.0] [cxt 0] Egress port is 1
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Pipeline 'egress': start
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Pipeline 'egress': end
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Deparser 'deparser': start
+[17:02:48.361] [bmv2] [T] [thread 28122] [31.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Deparsing header 'gvt'
+[17:02:48.361] [bmv2] [D] [thread 28122] [31.0] [cxt 0] Deparser 'deparser': end
+[17:02:48.361] [bmv2] [D] [thread 28125] [31.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:02:53.397] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Processing packet received on port 1
+[17:02:53.397] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser 'parser': start
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Extracting header 'ethernet'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Bytes parsed: 14
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Extracting header 'gvt'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Bytes parsed: 30
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Parser 'parser': end
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Pipeline 'ingress': start
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Applying table 'tbl_act_4'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Looking up key:
+
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Table 'tbl_act_4': miss
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Action entry is act_4 - 
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Action act_4
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:02:53.398] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Looking up key:
+
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:02:53.398] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:02:53.399] [bmv2] [T] [thread 28120] [32.0] [cxt 0] Action MyIngress.multicast
+[17:02:53.399] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:02:53.399] [bmv2] [T] [thread 28120] [32.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:53.399] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Pipeline 'ingress': end
+[17:02:53.399] [bmv2] [D] [thread 28120] [32.0] [cxt 0] Multicast requested for packet
+[17:02:53.399] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Processing packet received on port 1
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser 'parser': start
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Extracting header 'ethernet'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser state 'start': key is 0600
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Bytes parsed: 14
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Extracting header 'gvt'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Bytes parsed: 30
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Parser 'parser': end
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Pipeline 'ingress': start
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Applying table 'tbl_act'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Looking up key:
+
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Table 'tbl_act': miss
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Action entry is act - 
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Action act
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] Action MyIngress.send_probe
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:02:58.437] [bmv2] [T] [thread 28120] [33.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:02:58.437] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Pipeline 'ingress': end
+[17:02:58.438] [bmv2] [D] [thread 28120] [33.0] [cxt 0] Egress port is 1
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Pipeline 'egress': start
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Pipeline 'egress': end
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Deparser 'deparser': start
+[17:02:58.438] [bmv2] [T] [thread 28122] [33.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Deparsing header 'ethernet'
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Deparsing header 'gvt'
+[17:02:58.438] [bmv2] [D] [thread 28122] [33.0] [cxt 0] Deparser 'deparser': end
+[17:02:58.438] [bmv2] [D] [thread 28125] [33.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Processing packet received on port 1
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser 'parser': start
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Extracting header 'ethernet'
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:03.468] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Bytes parsed: 14
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Extracting header 'gvt'
+[17:03:03.468] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:03.468] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Bytes parsed: 30
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Parser 'parser': end
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Pipeline 'ingress': start
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Looking up key:
+
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Action entry is act_4 - 
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Action act_4
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Looking up key:
+
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] Action MyIngress.multicast
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:03.469] [bmv2] [T] [thread 28120] [34.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Pipeline 'ingress': end
+[17:03:03.469] [bmv2] [D] [thread 28120] [34.0] [cxt 0] Multicast requested for packet
+[17:03:03.469] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Processing packet received on port 1
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser 'parser': start
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Extracting header 'ethernet'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Bytes parsed: 14
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Extracting header 'gvt'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Bytes parsed: 30
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Parser 'parser': end
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Pipeline 'ingress': start
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Applying table 'tbl_act'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Looking up key:
+
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Table 'tbl_act': miss
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Action entry is act - 
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Action act
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:08.498] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] Action MyIngress.send_probe
+[17:03:08.498] [bmv2] [T] [thread 28120] [35.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:08.499] [bmv2] [T] [thread 28120] [35.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:08.499] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Pipeline 'ingress': end
+[17:03:08.499] [bmv2] [D] [thread 28120] [35.0] [cxt 0] Egress port is 1
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Pipeline 'egress': start
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Pipeline 'egress': end
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Deparser 'deparser': start
+[17:03:08.499] [bmv2] [T] [thread 28122] [35.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Deparsing header 'gvt'
+[17:03:08.499] [bmv2] [D] [thread 28122] [35.0] [cxt 0] Deparser 'deparser': end
+[17:03:08.499] [bmv2] [D] [thread 28125] [35.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Processing packet received on port 1
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser 'parser': start
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Extracting header 'ethernet'
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:13.524] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Bytes parsed: 14
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Extracting header 'gvt'
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:13.524] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Bytes parsed: 30
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Parser 'parser': end
+[17:03:13.524] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Pipeline 'ingress': start
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Looking up key:
+
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Action entry is act_4 - 
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Action act_4
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Looking up key:
+
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] Action MyIngress.multicast
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:13.525] [bmv2] [T] [thread 28120] [36.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Pipeline 'ingress': end
+[17:03:13.525] [bmv2] [D] [thread 28120] [36.0] [cxt 0] Multicast requested for packet
+[17:03:13.525] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Processing packet received on port 1
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser 'parser': start
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Extracting header 'ethernet'
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:18.552] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Bytes parsed: 14
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Extracting header 'gvt'
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:18.552] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Bytes parsed: 30
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Parser 'parser': end
+[17:03:18.552] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Pipeline 'ingress': start
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Applying table 'tbl_act'
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Looking up key:
+
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Table 'tbl_act': miss
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Action entry is act - 
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Action act
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] Action MyIngress.send_probe
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:18.553] [bmv2] [T] [thread 28120] [37.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Pipeline 'ingress': end
+[17:03:18.553] [bmv2] [D] [thread 28120] [37.0] [cxt 0] Egress port is 1
+[17:03:18.553] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Pipeline 'egress': start
+[17:03:18.553] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Pipeline 'egress': end
+[17:03:18.553] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Deparser 'deparser': start
+[17:03:18.553] [bmv2] [T] [thread 28122] [37.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:18.553] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:18.553] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Deparsing header 'gvt'
+[17:03:18.554] [bmv2] [D] [thread 28122] [37.0] [cxt 0] Deparser 'deparser': end
+[17:03:18.554] [bmv2] [D] [thread 28125] [37.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:23.576] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Processing packet received on port 1
+[17:03:23.577] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser 'parser': start
+[17:03:23.577] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:23.577] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Extracting header 'ethernet'
+[17:03:23.577] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:23.577] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Bytes parsed: 14
+[17:03:23.577] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:23.578] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Extracting header 'gvt'
+[17:03:23.578] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Bytes parsed: 30
+[17:03:23.578] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Parser 'parser': end
+[17:03:23.578] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Pipeline 'ingress': start
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:23.578] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Looking up key:
+
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Action entry is act_4 - 
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Action act_4
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Looking up key:
+
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] Action MyIngress.multicast
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:23.579] [bmv2] [T] [thread 28120] [38.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Pipeline 'ingress': end
+[17:03:23.579] [bmv2] [D] [thread 28120] [38.0] [cxt 0] Multicast requested for packet
+[17:03:23.579] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Processing packet received on port 1
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser 'parser': start
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Extracting header 'ethernet'
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:28.609] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Bytes parsed: 14
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Extracting header 'gvt'
+[17:03:28.609] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:28.609] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Bytes parsed: 30
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Parser 'parser': end
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Pipeline 'ingress': start
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Applying table 'tbl_act'
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Looking up key:
+
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Table 'tbl_act': miss
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Action entry is act - 
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Action act
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] Action MyIngress.send_probe
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:28.610] [bmv2] [T] [thread 28120] [39.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:28.610] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Pipeline 'ingress': end
+[17:03:28.611] [bmv2] [D] [thread 28120] [39.0] [cxt 0] Egress port is 1
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Pipeline 'egress': start
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Pipeline 'egress': end
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Deparser 'deparser': start
+[17:03:28.611] [bmv2] [T] [thread 28122] [39.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Deparsing header 'gvt'
+[17:03:28.611] [bmv2] [D] [thread 28122] [39.0] [cxt 0] Deparser 'deparser': end
+[17:03:28.611] [bmv2] [D] [thread 28125] [39.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:33.641] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Processing packet received on port 1
+[17:03:33.641] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser 'parser': start
+[17:03:33.641] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:33.641] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Extracting header 'ethernet'
+[17:03:33.641] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:33.641] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Bytes parsed: 14
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Extracting header 'gvt'
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Bytes parsed: 30
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Parser 'parser': end
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Pipeline 'ingress': start
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Looking up key:
+
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Action entry is act_4 - 
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Action act_4
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Looking up key:
+
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] Action MyIngress.multicast
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:33.642] [bmv2] [T] [thread 28120] [40.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Pipeline 'ingress': end
+[17:03:33.642] [bmv2] [D] [thread 28120] [40.0] [cxt 0] Multicast requested for packet
+[17:03:33.642] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Processing packet received on port 1
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser 'parser': start
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Extracting header 'ethernet'
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Bytes parsed: 14
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Extracting header 'gvt'
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Bytes parsed: 30
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Parser 'parser': end
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Pipeline 'ingress': start
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Applying table 'tbl_act'
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Looking up key:
+
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Table 'tbl_act': miss
+[17:03:38.668] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Action entry is act - 
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Action act
+[17:03:38.668] [bmv2] [T] [thread 28120] [41.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:38.669] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:38.669] [bmv2] [T] [thread 28120] [41.0] [cxt 0] Action MyIngress.send_probe
+[17:03:38.669] [bmv2] [T] [thread 28120] [41.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:38.669] [bmv2] [T] [thread 28120] [41.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Pipeline 'ingress': end
+[17:03:38.669] [bmv2] [D] [thread 28120] [41.0] [cxt 0] Egress port is 1
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Pipeline 'egress': start
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Pipeline 'egress': end
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Deparser 'deparser': start
+[17:03:38.669] [bmv2] [T] [thread 28122] [41.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Deparsing header 'gvt'
+[17:03:38.669] [bmv2] [D] [thread 28122] [41.0] [cxt 0] Deparser 'deparser': end
+[17:03:38.669] [bmv2] [D] [thread 28125] [41.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Processing packet received on port 1
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser 'parser': start
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Extracting header 'ethernet'
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Bytes parsed: 14
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Extracting header 'gvt'
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Bytes parsed: 30
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Parser 'parser': end
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Pipeline 'ingress': start
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Looking up key:
+
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:43.700] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Action entry is act_4 - 
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Action act_4
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:43.700] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:43.701] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:43.701] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Looking up key:
+
+[17:03:43.701] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:43.701] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:43.701] [bmv2] [T] [thread 28120] [42.0] [cxt 0] Action MyIngress.multicast
+[17:03:43.701] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:43.701] [bmv2] [T] [thread 28120] [42.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:43.701] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Pipeline 'ingress': end
+[17:03:43.701] [bmv2] [D] [thread 28120] [42.0] [cxt 0] Multicast requested for packet
+[17:03:43.701] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:48.732] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Processing packet received on port 1
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser 'parser': start
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Extracting header 'ethernet'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Bytes parsed: 14
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Extracting header 'gvt'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Bytes parsed: 30
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Parser 'parser': end
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Pipeline 'ingress': start
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Applying table 'tbl_act'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Looking up key:
+
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Table 'tbl_act': miss
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Action entry is act - 
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Action act
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:48.733] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:48.733] [bmv2] [T] [thread 28120] [43.0] [cxt 0] Action MyIngress.send_probe
+[17:03:48.734] [bmv2] [T] [thread 28120] [43.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:48.734] [bmv2] [T] [thread 28120] [43.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:48.734] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Pipeline 'ingress': end
+[17:03:48.734] [bmv2] [D] [thread 28120] [43.0] [cxt 0] Egress port is 1
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Pipeline 'egress': start
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Pipeline 'egress': end
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Deparser 'deparser': start
+[17:03:48.734] [bmv2] [T] [thread 28122] [43.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Deparsing header 'gvt'
+[17:03:48.734] [bmv2] [D] [thread 28122] [43.0] [cxt 0] Deparser 'deparser': end
+[17:03:48.734] [bmv2] [D] [thread 28125] [43.0] [cxt 0] Transmitting packet of size 30 out of port 1
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Processing packet received on port 1
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser 'parser': start
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Extracting header 'ethernet'
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:53.761] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Bytes parsed: 14
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Extracting header 'gvt'
+[17:03:53.761] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Bytes parsed: 30
+[17:03:53.762] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Parser 'parser': end
+[17:03:53.762] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Pipeline 'ingress': start
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is false
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(93) Condition "(hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0" (node_6) is false
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(106) Condition "hdr.gvt.type == TYPE_REQ" (node_11) is false
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(110) Condition "hdr.gvt.type == TYPE_PREPAREOK" (node_13) is false
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(119) Condition "hdr.gvt.type == TYPE_STARTCHANGE" (node_18) is true
+[17:03:53.762] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Applying table 'tbl_act_4'
+[17:03:53.762] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Looking up key:
+
+[17:03:53.762] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Table 'tbl_act_4': miss
+[17:03:53.762] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Action entry is act_4 - 
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Action act_4
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(121) Primitive DoChangeNumber.write (0, 0)
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Wrote register 'DoChangeNumber' at index 0 with value 0
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Applying table 'tbl_multicast_0'
+[17:03:53.763] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Looking up key:
+
+[17:03:53.763] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Table 'tbl_multicast_0': miss
+[17:03:53.763] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Action entry is MyIngress.multicast - 
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] Action MyIngress.multicast
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(46) Primitive standard_metadata.mcast_grp = (bit<16>) grp_id; ...
+[17:03:53.763] [bmv2] [T] [thread 28120] [44.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:53.763] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Pipeline 'ingress': end
+[17:03:53.763] [bmv2] [D] [thread 28120] [44.0] [cxt 0] Multicast requested for packet
+[17:03:53.763] [bmv2] [W] [thread 28120] Replication requested for mgid 3, which is not known to the PRE
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Processing packet received on port 1
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser 'parser': start
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser 'parser' entering state 'start'
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Extracting header 'ethernet'
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser state 'start': key is 0600
+[17:03:58.794] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Bytes parsed: 14
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser 'parser' entering state 'parse_gvt'
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Extracting header 'gvt'
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser state 'parse_gvt' has no switch, going to default next state
+[17:03:58.794] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Bytes parsed: 30
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Parser 'parser': end
+[17:03:58.794] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Pipeline 'ingress': start
+[17:03:58.794] [bmv2] [T] [thread 28120] [45.0] [cxt 0] basic.p4(87) Condition "hdr.gvt.isValid()" (node_2) is true
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] basic.p4(88) Condition "hdr.gvt.type == TYPE_FAILURE" (node_3) is true
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Applying table 'tbl_act'
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Looking up key:
+
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Table 'tbl_act': miss
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Action entry is act - 
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Action act
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] include/headers.p4(14) Primitive 0x6666; ...
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Applying table 'MyIngress.send_probe_server'
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Looking up key:
+* hdr.gvt.pid         : 00000001
+
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Table 'MyIngress.send_probe_server': hit with handle 0
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.gvt.pid         : EXACT     00000001
+Action entry: MyIngress.send_probe - 1,
+
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Action entry is MyIngress.send_probe - 1,
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] Action MyIngress.send_probe
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] basic.p4(50) Primitive standard_metadata.egress_spec = port
+[17:03:58.795] [bmv2] [T] [thread 28120] [45.0] [cxt 0] basic.p4(137) Condition "meta.iterator > 0" (node_26) is false
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Pipeline 'ingress': end
+[17:03:58.795] [bmv2] [D] [thread 28120] [45.0] [cxt 0] Egress port is 1
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Pipeline 'egress': start
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Pipeline 'egress': end
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Deparser 'deparser': start
+[17:03:58.795] [bmv2] [T] [thread 28122] [45.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Deparsing header 'ethernet'
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Deparsing header 'gvt'
+[17:03:58.795] [bmv2] [D] [thread 28122] [45.0] [cxt 0] Deparser 'deparser': end
+[17:03:58.796] [bmv2] [D] [thread 28125] [45.0] [cxt 0] Transmitting packet of size 30 out of port 1
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory
+open: No such file or directory

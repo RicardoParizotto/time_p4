@@ -1,20 +1,24 @@
 const bit<16> TYPE_IPV4 = 0x800;
 const bit<16> TYPE_GVT = 0x600;
+
+/*synchronization*/
 const bit<32> TYPE_PROP = 0x1919;
 const bit<32> TYPE_DEL = 0x1313;
-
 const bit<32> TYPE_REQ = 0x1515;
 const bit<32> TYPE_PREPARE = 0x3333;
 const bit<32> TYPE_PREPAREOK = 0x4444;
 
+/*recovery*/
+const bit<16> TYPE_VIEWCHANGE = 0x700;
+const bit<32> TYPE_STARTCHANGE = 0x4343;
+const bit<32> TYPE_STARTVIEW = 0x4747;
+const bit<32> TYPE_MAKECHANGE = 0x4848;
+const bit<32> TYPE_FAILURE = 0x5555;
+const bit<32> TYPE_DELFAILURE = 0x6666;
 
-#define TOTAL_NUMBER_OF_PROCESSES 3
+#define TOTAL_NUMBER_OF_PROCESSES 2
 #define INFINITE 1000000
-#define MAJORITY 2
-
-/*************************************************************************
-*********************** H E A D E R S  ***********************************
-*************************************************************************/
+#define MAJORITY 1
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -46,11 +50,17 @@ header ipv4_t {
     ip4Addr_t dstAddr;
 }
 
+
 header gvt_t{
     bit<32> type;
     value_t value;
     lpid_t  pid;
     bit<32> round; 
+}
+
+header viewchange_t{
+    value_t value;
+    bit<32> proto_id;
 }
 
 struct metadata {
@@ -60,6 +70,7 @@ struct metadata {
     bit<32> minLVT;
     bit<32> iterator;
     bit<32> numPrepareOks;
+    bit<32> numDoChanges;
     bit<32> currentRound;
     egressSpec_t out_aux;
 }
@@ -68,4 +79,5 @@ struct headers {
     ethernet_t     ethernet;
     ipv4_t             ipv4;
     gvt_t               gvt;
+    viewchange_t[TOTAL_NUMBER_OF_PROCESSES]  viewchange;  
 }

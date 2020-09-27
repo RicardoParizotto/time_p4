@@ -18,8 +18,19 @@ parser MyParser(packet_in packet,
 
     state parse_gvt {
         packet.extract(hdr.gvt);
-        transition accept;
+	transition accept;	
     }
+     
+    /*
+    state parse_viewchange{
+        packet.extract(hdr.viewchange.next){
+	   transition select(hdr.viewchange.last.proto_id){
+	       TYPE_DOCHANGE: parse_viewchange;	
+	       default:accept;
+	   }
+        }
+    }
+    */
 
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
@@ -32,6 +43,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
         packet.emit(hdr.gvt);
+        packet.emit(hdr.viewchange);
         packet.emit(hdr.ipv4);
     }
 }
