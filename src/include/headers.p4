@@ -9,7 +9,7 @@ const bit<32> TYPE_PREPARE = 0x3333;
 const bit<32> TYPE_PREPAREOK = 0x4444;
 
 /*recovery*/
-const bit<16> TYPE_VIEWCHANGE = 0x700;
+const bit<32> TYPE_VIEWCHANGE = 0x700;
 const bit<32> TYPE_STARTCHANGE = 0x4343;
 const bit<32> TYPE_STARTVIEW = 0x4747;
 const bit<32> TYPE_MAKECHANGE = 0x4848;
@@ -56,6 +56,7 @@ header gvt_t{
     value_t value;
     lpid_t  pid;
     bit<32> round; 
+    bit<32> sid;
 }
 
 header viewchange_t{
@@ -73,6 +74,7 @@ struct metadata {
     bit<32> numDoChanges;
     bit<32> currentRound;
     egressSpec_t out_aux;
+    bit<32> primary;
 }
 
 struct headers {

@@ -11,6 +11,7 @@ register<bit<32>>(1) RoundNumber;
 register<bit<32>>(1000) RoundControl;
 register<egressSpec_t>(1) primary_port;
 register<bit<32>>(1) DoChangeNumber;
+register<bit<32>>(1) LeaderId;
 
 control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
     apply {  }
@@ -46,8 +47,12 @@ control MyIngress(inout headers hdr,
       standard_metadata.mcast_grp = (bit<16>) grp_id;
     }
 
-    action send_probe(egressSpec_t port) {
+    action send_message(egressSpec_t port) {
       standard_metadata.egress_spec = port;
+    }
+
+    action set_id(bit<32> switch_id){
+      hdr.gvt.sid = switch_id;
     }
 
     table ipv4_lpm {
@@ -65,49 +70,74 @@ control MyIngress(inout headers hdr,
 
     table set_primary {
       key = {
-        meta.iterator: exact;
+        hdr.gvt.sid: exact;
       }
       actions = {
-      answer_replica;
+         answer_replica;
       }
-      size = 1;
+      size = 10;
     }
 
-    table send_probe_server {
+    table this_switch {
+      key = {
+         hdr.gvt.sid: exact; 
+      }
+      actions = {
+        set_id;
+      }
+      size = 10;
+    }
+
+    table this_switch_2 {
+      key = {
+         hdr.gvt.sid: exact; 
+      }
+      actions = {
+        set_id;
+      }
+      size = 10;
+    }
+
+    table set_destination {
       key = {
          hdr.gvt.pid: exact;
       }
       actions = {
-        send_probe;
+        send_message;
       }
-      size = 10;     /*each process need one entry*/
+      size = 20;     /*each process needs one entry*/
+    }
+
+    table set_switch_dest {
+      key = {
+        hdr.gvt.sid: exact;
+      }
+      actions = {
+        send_message;
+      }
+      size = 20;
     }
     
     apply {
         if(hdr.gvt.isValid()){
-          if( hdr.gvt.type == TYPE_FAILURE){
-            /*if is a probe message just answer it
-            TODO: configuration file*/
-            hdr.gvt.type = TYPE_DELFAILURE;  
-            send_probe_server.apply();
-          }else if ((hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0){
+          if( hdr.gvt.type == TYPE_FAILURE){                      /*if is a probe message just answer it */
+            set_destination.apply();                              //i'm not dead, bro. Just bored. Relax!
+          } else if ((hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0){
             /*if is a server proposal or a prepare message. Both case are equivalent
             but the first is a message recived from servers an the latter, TYPE_PREPARE, is for replicas*/
             GVT.read(meta.currentGVT, 0);
-            /*check for conditions to start a new gvt computation*/
-            if (meta.currentGVT < hdr.gvt.value) {
-                LvtValues.write(hdr.gvt.pid, hdr.gvt.value);
-                //trigger metadata to start GVT calculation
-                meta.iterator = 1;   
-            } else {
-              /*If the value is less or equal to the GVT we dont need to check anything, just drop it*/
+            if (meta.currentGVT < hdr.gvt.value) {                /*check for conditions to start a new gvt computation*/
+                LvtValues.write(hdr.gvt.pid, hdr.gvt.value);      //store the process LVT
+                meta.iterator = 1;                                //trigger metadata to start GVT calculation
+            } else {                                              /*If the value is less or equal to the GVT we dont need to check anything, just drop it*/
               drop();
             }
-          } else if(hdr.gvt.type == TYPE_REQ){
-            //if is a start message, TYPE_REQ  
-            start_execution();
-          /*if is acknoledgment message from replicas, TYPE_PREPAREOK*/  
-          } else if(hdr.gvt.type == TYPE_PREPAREOK){
+          } /*else if(hdr.gvt.type == TYPE_REQ){                    //if is a start message, TYPE_REQ  
+              start_execution();                                  
+              DoChangeNumber.write (0, 0);
+              this_switch.apply();                                //attach the switch ID into the message
+              multicast(3);      */
+             else if(hdr.gvt.type == TYPE_PREPAREOK){              /*if is acknoledgment message from replicas, TYPE_PREPAREOK*/  
                 RoundControl.read( meta.numPrepareOks, hdr.gvt.round);
                 meta.numPrepareOks = meta.numPrepareOks + 1;
                 RoundControl.write (hdr.gvt.round, meta.numPrepareOks);
@@ -116,58 +146,51 @@ control MyIngress(inout headers hdr,
                   GVT.read(hdr.gvt.value, 0);
                   multicast(1);
                 }
-           } else if(hdr.gvt.type == TYPE_VIEWCHANGE){
+           } else if(hdr.gvt.type == TYPE_VIEWCHANGE || hdr.gvt.type == TYPE_REQ){
                /*TODO: ensure that other start changes does not init while one is active*/
                hdr.gvt.type = TYPE_STARTCHANGE;
                DoChangeNumber.write (0, 0);
-               multicast(3);
-
+               this_switch.apply();                                     //attaches the switch ID into the message
+               multicast(3);                                            //send a start_change for all the replicas. Multicast group is defined statically in the control plane
            } else if (hdr.gvt.type == TYPE_STARTCHANGE){
-
-           } else if(hdr.gvt.type == TYPE_DOCHANGE){
-               /*TODO: wait for the maximum and choose the most updated view*/
+                hdr.gvt.type = TYPE_MAKECHANGE;                   
+                /*TODO: update the primary*/
+                LeaderId.write(0, hdr.gvt.sid);
+                set_switch_dest.apply();                                //set the destination based on the incomming packet source
+           } else if(hdr.gvt.type == TYPE_MAKECHANGE){
                 DoChangeNumber.read( meta.numDoChanges, 0);
                 meta.numPrepareOks = meta.numDoChanges + 1;
                 DoChangeNumber.write (0, meta.numDoChanges);
-                if(meta.numDoChanges >= MAJORITY){
+                if(meta.numDoChanges >= MAJORITY){                      /*wait for the maximum and them sends the star view for servers*/
                   /*TODO: we need to send a startview both for servers and then servers resend old proposals */ 
-                  multicast(1);
+                  /*TODO: we also need to identify how to compute old values*/
+                  multicast(1);                                         //this multicast group does not need to change
                   hdr.gvt.type = TYPE_STARTVIEW;
                 }
            }
-
-          /*this condition is to start the GVT computation*/ 
-          if(meta.iterator > 0 ){       
-          /*if is the first iteration*/
-              if(meta.iterator == 1){
+          if(meta.iterator > 0 ){                                       /*this condition is to start the GVT computation*/ 
+              if(meta.iterator == 1){                                   /*if is the first iteration*/
                 LvtValues.read(meta.minLVT, 0); 
                 GVT.read(meta.currentGVT, 0);     
               }
-              /*note that we do not consider 
-              a scenario with zero processes */
+              /*we do not consider a scenario with zero processes */
               LvtValues.read(meta.readedValue, meta.iterator);
-              /*selecting the less gvt time*/
-              if(meta.readedValue < meta.minLVT){
+              if(meta.readedValue < meta.minLVT){                        /*selecting the less gvt time*/
                 meta.minLVT = meta.readedValue;
               }
-              /*iterates through the register array*/
-              meta.iterator = meta.iterator + 1;
-              /*if it is the last iteration*/
-              if(meta.iterator == TOTAL_NUMBER_OF_PROCESSES){
-                    /*update GVT and multicast the new value for replicas*/
-                    GVT.write(0, meta.minLVT);
+              meta.iterator = meta.iterator + 1;                         /*iterates through the register array*/
+              if(meta.iterator == TOTAL_NUMBER_OF_PROCESSES){            /*if it is the last iteration*/
+                    GVT.write(0, meta.minLVT);                           /*update GVT and multicast the new value for replicas*/
                     if (hdr.gvt.type == TYPE_PREPARE){
                       hdr.gvt.type = TYPE_PREPAREOK;
-                      set_primary.apply();
-                    } else { 
-                        /*the other case is the hdr.gvt.value is propose*/
-                        /*append round number to the header and reset the history of PREPAREOKS*/
-                        RoundNumber.read(meta.currentRound, 0);
+                      set_primary.apply();                               //the primary is defined using the received switch id to determine an output port
+                    } else {                                             /*the other case is the hdr.gvt.value is propose*/                                          
+                        RoundNumber.read(meta.currentRound, 0);          /*append round number to the header and reset the history of PREPAREOKS*/
                         RoundNumber.write(0, meta.currentRound + 1);
                         hdr.gvt.round = meta.currentRound + 1;
                         hdr.gvt.type = TYPE_PREPARE;
-                        /*send for replicas*/
-                        multicast(2); 
+                        this_switch_2.apply();  
+                        multicast(2);                                    /*send for replicas*/
                     }
               } else {
                 resubmit(meta); 
