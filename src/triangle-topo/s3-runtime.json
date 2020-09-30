@@ -6,11 +6,21 @@
     {
       "table": "MyIngress.set_primary",
       "match": {
-        "hdr.gvt.sid": 2
+        "meta.primary": 1 
       },
       "action_name": "MyIngress.answer_replica",
       "action_params": {
         "port": 4
+      }
+    },
+    {
+      "table": "MyIngress.set_primary",
+      "match": {
+        "meta.primary": 2
+      },
+      "action_name": "MyIngress.answer_replica",
+      "action_params": {
+        "port": 5
       }
     },
     {

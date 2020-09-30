@@ -39,6 +39,9 @@ class gvtControl:
         self.sent_but_not_yet_acknowledged = 0;
         #interfaces
 
+
+        self.start_synchronization()
+
         #start receiver thread
         self.receivethread = threading.Thread(target=self.receiveThread)
         self.receivethread.start()
@@ -50,6 +53,13 @@ class gvtControl:
 
         self.alive = threading.Thread(target=self.aliveThread)
         self.alive.start()
+
+    def start_synchronization(self):
+        #this not right. A separeted process should init that.
+        if(self.pid == 1):
+            pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
+            pkt = pkt / GvtProtocol(flag = TYPE_REQ, value=0, pid= self.pid)
+            sendp(pkt, iface=self.iface, verbose=False)
 
 
     def receiveThread(self):
@@ -77,14 +87,12 @@ class gvtControl:
         sys.stdout.flush()
 
     def change_interface(self):
-        print('teste4:' + str(self.ifs))
+        print('PRIMARY TIMEOUT!!!' + str(self.ifs))
         for i in self.ifs:
             if i:
-                print('teste2')
                 self.iface = i
                 self.ifs.remove(i)
                 break
-            print('teste3')
 
     def get_if(self):
         self.ifs=get_if_list()
@@ -124,7 +132,7 @@ class gvtControl:
 
     def aliveThread(self):
         while True:
-            time.sleep(5)
+            time.sleep(10)
             if(self.leader_alive == 1):
                 pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
                 pkt = pkt / GvtProtocol(flag = TYPE_FAILURE, value=0, pid= self.pid)
@@ -136,10 +144,8 @@ class gvtControl:
                 print(self.ifs)
             else:
                 #trigger recovery...
-                #TODO: muda iface para enviar
                 self.change_interface() 
                 self.leader_alive = 1 #necessario para nao entrar nessa condicao logo que o novo leader e escolhido
-                print('teste')
                 #envia pacote de start changeS
                 pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
                 pkt = pkt / GvtProtocol(flag = TYPE_VIEWCHANGE, value=0, pid= self.pid)

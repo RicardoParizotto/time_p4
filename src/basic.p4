@@ -70,7 +70,7 @@ control MyIngress(inout headers hdr,
 
     table set_primary {
       key = {
-        hdr.gvt.sid: exact;
+        meta.primary: exact;
       }
       actions = {
          answer_replica;
@@ -132,12 +132,7 @@ control MyIngress(inout headers hdr,
             } else {                                              /*If the value is less or equal to the GVT we dont need to check anything, just drop it*/
               drop();
             }
-          } /*else if(hdr.gvt.type == TYPE_REQ){                    //if is a start message, TYPE_REQ  
-              start_execution();                                  
-              DoChangeNumber.write (0, 0);
-              this_switch.apply();                                //attach the switch ID into the message
-              multicast(3);      */
-             else if(hdr.gvt.type == TYPE_PREPAREOK){              /*if is acknoledgment message from replicas, TYPE_PREPAREOK*/  
+          } else if(hdr.gvt.type == TYPE_PREPAREOK){              /*if is acknoledgment message from replicas, TYPE_PREPAREOK*/  
                 RoundControl.read( meta.numPrepareOks, hdr.gvt.round);
                 meta.numPrepareOks = meta.numPrepareOks + 1;
                 RoundControl.write (hdr.gvt.round, meta.numPrepareOks);
@@ -150,13 +145,12 @@ control MyIngress(inout headers hdr,
                /*TODO: ensure that other start changes does not init while one is active*/
                hdr.gvt.type = TYPE_STARTCHANGE;
                DoChangeNumber.write (0, 0);
-               this_switch.apply();                                     //attaches the switch ID into the message
-               multicast(3);                                            //send a start_change for all the replicas. Multicast group is defined statically in the control plane
+               this_switch.apply();                                 //attaches the switch ID into the message
+               multicast(2);                                        //send a start_change for all the replicas. Multicast group is defined statically in the control plane
            } else if (hdr.gvt.type == TYPE_STARTCHANGE){
                 hdr.gvt.type = TYPE_MAKECHANGE;                   
-                /*TODO: update the primary*/
-                LeaderId.write(0, hdr.gvt.sid);
-                set_switch_dest.apply();                                //set the destination based on the incomming packet source
+                LeaderId.write(0, hdr.gvt.sid);                     /*update the primary ID*/
+                set_switch_dest.apply();                            //set the destination based on the incomming packet source
            } else if(hdr.gvt.type == TYPE_MAKECHANGE){
                 DoChangeNumber.read( meta.numDoChanges, 0);
                 meta.numPrepareOks = meta.numDoChanges + 1;
@@ -183,6 +177,7 @@ control MyIngress(inout headers hdr,
                     GVT.write(0, meta.minLVT);                           /*update GVT and multicast the new value for replicas*/
                     if (hdr.gvt.type == TYPE_PREPARE){
                       hdr.gvt.type = TYPE_PREPAREOK;
+                      LeaderId.read(meta.primary, 0);
                       set_primary.apply();                               //the primary is defined using the received switch id to determine an output port
                     } else {                                             /*the other case is the hdr.gvt.value is propose*/                                          
                         RoundNumber.read(meta.currentRound, 0);          /*append round number to the header and reset the history of PREPAREOKS*/

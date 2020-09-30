@@ -6,7 +6,7 @@
     {
       "table": "MyIngress.set_primary",
       "match": {
-        "hdr.gvt.sid": 1 
+        "meta.primary": 1 
       },
       "action_name": "MyIngress.answer_replica",
       "action_params": {
@@ -16,7 +16,7 @@
     {
       "table": "MyIngress.set_primary",
       "match": {
-        "hdr.gvt.sid": 3
+        "meta.primary": 3
       },
       "action_name": "MyIngress.answer_replica",
       "action_params": {
