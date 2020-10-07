@@ -6,7 +6,7 @@
     {
       "table": "MyIngress.set_destination",
       "match": {
-        "hdr.gvt.pid": 1
+        "hdr.gvt.pid": 0
       },
       "action_name": "MyIngress.send_message",
       "action_params": {
@@ -16,7 +16,7 @@
     {
       "table": "MyIngress.set_destination",
       "match": {
-        "hdr.gvt.pid": 2
+        "hdr.gvt.pid": 1
       },
       "action_name": "MyIngress.send_message",
       "action_params": {

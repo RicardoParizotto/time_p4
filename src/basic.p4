@@ -1,3 +1,6 @@
+/*Never forget: components/processes are indexed by their id [0..n - 1]. 
+*/
+
 #include <core.p4>
 #include <v1model.p4>
 #include "include/headers.p4"
@@ -121,6 +124,7 @@ control MyIngress(inout headers hdr,
     apply {
         if(hdr.gvt.isValid()){
           if( hdr.gvt.type == TYPE_FAILURE){                      /*if is a probe message just answer it */
+             hdr.gvt.type = TYPE_DELFAILURE;
             set_destination.apply();                              //i'm not dead, bro. Just bored. Relax!
           } else if ((hdr.gvt.type == TYPE_PROP || hdr.gvt.type == TYPE_PREPARE) && meta.iterator == 0){
             /*if is a server proposal or a prepare message. Both case are equivalent

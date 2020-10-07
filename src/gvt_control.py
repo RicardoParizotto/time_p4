@@ -6,6 +6,7 @@ import random
 import struct
 import threading
 import time 
+import thread
 
 from scapy.all import sendp, send, get_if_list, get_if_hwaddr
 from scapy.all import Packet
@@ -24,6 +25,7 @@ TYPE_STARTVIEW = 0x4747
 TYPE_FAILURE = 0x5555
 TYPE_DELFAILURE = 0x6666
 TYPE_VIEWCHANGE = 0x700
+TYPE_RESENDPROP = 0x1919
 
 class gvtControl:
     def __init__(self, dest_ip, pid):
@@ -36,10 +38,12 @@ class gvtControl:
         self.last_proposal = 0
         self.last_proposal_time = 0
         self.leader_alive = 1
-        self.sent_but_not_yet_acknowledged = 0;
+        self.sent_but_not_yet_acknowledged = 0
         #interfaces
 
+        self.lock_alive = thread.allocate_lock()
 
+        #gambia. One process start the synchronization.
         self.start_synchronization()
 
         #start receiver thread
@@ -50,6 +54,7 @@ class gvtControl:
         #start run loop
         self.run_loop = threading.Thread(target=self.runThread)
         self.run_loop.start()
+
 
         self.alive = threading.Thread(target=self.aliveThread)
         self.alive.start()
@@ -63,27 +68,34 @@ class gvtControl:
 
 
     def receiveThread(self):
-        ifaces = filter(lambda i: 'eth' in i, os.listdir('/sys/class/net/'))
-        iface = ifaces[0]
-        print "sniffing on %s" % iface
+        #ifaces = filter(lambda i: 'eth' in i, os.listdir('/sys/class/net/'))
+        #iface = ifaces[0]
+        print "sniffing on %s" % self.iface
         sys.stdout.flush()
-        sniff(iface = iface, prn = lambda x: self.handle_pkt(x))
+        sniff(iface = self.iface, prn = lambda x: self.handle_pkt(x))
+        #TODO: Change this interface after the failure
 
     def handle_pkt(self, pkt):
         if GvtProtocol in pkt:
-            #delivering new GVT value for the server
-            if pkt[GvtProtocol].flag == TYPE_DEL:
+            #print "receive"
+            if pkt[GvtProtocol].flag == TYPE_DEL:              #delivering new GVT value for the server
                 self.GVT_value = pkt[GvtProtocol].value
                 print "got new value: " + str(self.GVT_value)
                 print "time: " + str(time.time() - self.last_proposal_time)
-                #what should i do with this new value?
-                if pkt[GvtProtocol].pid == self.pid:
+                #acknowledges the message
+                if self.GVT_value == self.sent_but_not_yet_acknowledged and pkt[GvtProtocol].pid == self.pid :
                     self.sent_but_not_yet_acknowledged = 0
-            elif pkt[GvtProtocol].flag == TYPE_DELFAILURE:
+                #what should i do with this new value    
+
+            elif pkt[GvtProtocol].flag == TYPE_DELFAILURE:   #this is a PONG! Primary is Alive bb!
+                #print "pong"
+                self.lock_alive.acquire()
                 self.leader_alive = 1
+                self.lock_alive.release()
+
             elif pkt[GvtProtocol].flag ==  TYPE_STARTVIEW:
                 #RESEND PACKETS for packet sent but not yet received
-                self.send_packet(flag_operation=TYPE_PROP, message_value=int(sent_but_not_yet_acknowledged), process_pid=self.pid)
+                self.send_packet(flag_operation=TYPE_PROP, message_value=int(self.sent_but_not_yet_acknowledged), process_pid=self.pid)
         sys.stdout.flush()
 
     def change_interface(self):
@@ -93,6 +105,16 @@ class gvtControl:
                 self.iface = i
                 self.ifs.remove(i)
                 break
+        self.receivethread = threading.Thread(target=self.receiveThread)
+        self.receivethread.start()
+        self.resend_old_messages()
+
+    def resend_old_messages(self):
+        #so esta mandando uma mensagem no momento
+        #TODO: armazenar e reenviar todas as mensagens da aplicacao
+        if(self.sent_but_not_yet_acknowledged):
+            self.send_packet(flag_operation=TYPE_PROP, message_value=int(self.sent_but_not_yet_acknowledged), process_pid=self.pid)
+
 
     def get_if(self):
         self.ifs=get_if_list()
@@ -132,16 +154,14 @@ class gvtControl:
 
     def aliveThread(self):
         while True:
-            time.sleep(10)
+            time.sleep(5)
+            self.lock_alive.acquire()
             if(self.leader_alive == 1):
                 pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
                 pkt = pkt / GvtProtocol(flag = TYPE_FAILURE, value=0, pid= self.pid)
-                sendp(pkt, iface=self.iface, verbose=False)
-                #need semaphor?
+                sendp(pkt, iface=self.iface, verbose=False)           #this is a PING! leader alive?
                 self.leader_alive = 0
-                print(self.leader_alive)
-                print(self.iface)
-                print(self.ifs)
+                #print "ping"
             else:
                 #trigger recovery...
                 self.change_interface() 
@@ -150,7 +170,7 @@ class gvtControl:
                 pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
                 pkt = pkt / GvtProtocol(flag = TYPE_VIEWCHANGE, value=0, pid= self.pid)
                 sendp(pkt, iface=self.iface, verbose=False) 
-
+            self.lock_alive.release()
 def main():    
     if len(sys.argv)<3:
         #TODO: Does not make sense this Dest IP. Solve it 
