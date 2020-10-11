@@ -41,6 +41,8 @@ class gvtControl:
         self.sent_but_not_yet_acknowledged = 0
         #interfaces
 
+        self.queue = []
+
         self.lock_alive = thread.allocate_lock()
 
         #gambia. One process start the synchronization.
@@ -55,9 +57,11 @@ class gvtControl:
         self.run_loop = threading.Thread(target=self.runThread)
         self.run_loop.start()
 
-
         self.alive = threading.Thread(target=self.aliveThread)
         self.alive.start()
+
+        self.send = threading.Thread(target=self.send_queue)
+        self.send.start()
 
     def start_synchronization(self):
         #this not right. A separeted process should init that.
@@ -96,6 +100,7 @@ class gvtControl:
             elif pkt[GvtProtocol].flag ==  TYPE_STARTVIEW:
                 #RESEND PACKETS for packet sent but not yet received
                 self.send_packet(flag_operation=TYPE_PROP, message_value=int(self.sent_but_not_yet_acknowledged), process_pid=self.pid)
+
         sys.stdout.flush()
 
     def change_interface(self):
@@ -118,7 +123,6 @@ class gvtControl:
 
     def get_if(self):
         self.ifs=get_if_list()
-        print(self.ifs)
         iface=None # "h1-eth0"
         for i in get_if_list():
             if "eth0" in i:
@@ -136,7 +140,6 @@ class gvtControl:
         pkt =  Ether(src=get_if_hwaddr(self.iface), dst='ff:ff:ff:ff:ff:ff', type = TYPE_GVT)
         pkt = pkt / GvtProtocol(flag = flag_operation, value=message_value, pid = process_pid)
         pkt = pkt /IP(dst=self.addr) / TCP(dport=1234, sport=random.randint(49152,65535))
-        self.sent_but_not_yet_acknowledged = message_value  
         sendp(pkt, iface=self.iface, verbose=False)
 
     def build_proposal(self, proposal_value):
@@ -149,8 +152,9 @@ class gvtControl:
             value = input('Type new LVT:')
             print "sending on interface %s to %s" % (self.iface, str(self.addr))
             #TODO: We need to enforce the concurrency control here
-            self.last_proposal_time = time.time()
-            self.build_proposal(proposal_value=value)
+            self.queue.append([value, time.time()])
+            #self.last_proposal_time = time.time()
+            #self.build_proposal(proposal_value=value)
 
     def aliveThread(self):
         while True:
@@ -171,6 +175,18 @@ class gvtControl:
                 pkt = pkt / GvtProtocol(flag = TYPE_VIEWCHANGE, value=0, pid= self.pid)
                 sendp(pkt, iface=self.iface, verbose=False) 
             self.lock_alive.release()
+
+    def send_queue(self):
+        #TODO: concurrency control
+        while True:
+            time.sleep(1)
+            if(self.sent_but_not_yet_acknowledged == 0 and len(self.queue) > 0):
+                get = self.queue.pop(0)
+                self.sent_but_not_yet_acknowledged = get[0]
+                print self.sent_but_not_yet_acknowledged
+                self.last_proposal_time = get[1]
+                self.build_proposal(proposal_value=self.sent_but_not_yet_acknowledged)          
+
 def main():    
     if len(sys.argv)<3:
         #TODO: Does not make sense this Dest IP. Solve it 
