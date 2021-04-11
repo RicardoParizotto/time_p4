@@ -11,8 +11,8 @@
       "action_name": "MyIngress.send_message",
       "action_params": {
         "port": 1
-      }
-    },
+       }
+     },
     {
       "table": "MyIngress.set_destination",
       "match": {
@@ -21,6 +21,76 @@
       "action_name": "MyIngress.send_message",
       "action_params": {
         "port": 2
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 2
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 3
+      }
+     },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 3
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 6
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 4
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 7
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 5
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 8
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 6
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 9
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 7
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 10
+      }
+    },
+    {
+      "table": "MyIngress.set_destination",
+      "match": {
+        "hdr.gvt.pid": 8
+      },
+      "action_name": "MyIngress.send_message",
+      "action_params": {
+        "port": 11
       }
     },
     {
@@ -44,6 +114,30 @@
         },
         {
           "egress_port" : 2,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 3,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 6,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 7,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 8,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 9,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 10,
           "instance" : 1
         }
       ]

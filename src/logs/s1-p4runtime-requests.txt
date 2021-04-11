@@ -1,10 +1,10 @@
 
-[2020-09-27 16:58:09.851] /p4.v1.P4Runtime/SetForwardingPipelineConfig
+[2021-04-11 00:20:20.700] /p4.v1.P4Runtime/SetForwardingPipelineConfig
 ---
-Message too long (86611 bytes)! Skipping log...
+Message too long (96245 bytes)! Skipping log...
 ---
 
-[2020-09-27 16:58:09.875] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.719] /p4.v1.P4Runtime/Write
 ---
 election_id {
   low: 1
@@ -13,16 +13,16 @@ updates {
   type: INSERT
   entity {
     table_entry {
-      table_id: 33561363
+      table_id: 33555362
       match {
         field_id: 1
         exact {
-          value: "\000\000\000\001"
+          value: "\000\000\000\000"
         }
       }
       action {
         action {
-          action_id: 16819453
+          action_id: 16833306
           params {
             param_id: 1
             value: "\000\001"
@@ -34,7 +34,7 @@ updates {
 }
 ---
 
-[2020-09-27 16:58:09.880] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.722] /p4.v1.P4Runtime/Write
 ---
 election_id {
   low: 1
@@ -43,16 +43,16 @@ updates {
   type: INSERT
   entity {
     table_entry {
-      table_id: 33561363
+      table_id: 33555362
       match {
         field_id: 1
         exact {
-          value: "\000\000\000\002"
+          value: "\000\000\000\001"
         }
       }
       action {
         action {
-          action_id: 16819453
+          action_id: 16833306
           params {
             param_id: 1
             value: "\000\002"
@@ -64,7 +64,247 @@ updates {
 }
 ---
 
-[2020-09-27 16:58:09.882] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.724] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\002"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\003"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.725] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\003"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\006"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.726] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\004"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\007"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.727] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\005"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\010"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.729] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\006"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\t"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.730] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\007"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\n"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.731] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33555362
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\010"
+        }
+      }
+      action {
+        action {
+          action_id: 16833306
+          params {
+            param_id: 1
+            value: "\000\013"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.732] /p4.v1.P4Runtime/Write
+---
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33573619
+      match {
+        field_id: 1
+        exact {
+          value: "\000\000\000\000"
+        }
+      }
+      action {
+        action {
+          action_id: 16803558
+          params {
+            param_id: 1
+            value: "\000\000\000\001"
+          }
+        }
+      }
+    }
+  }
+}
+---
+
+[2021-04-11 00:20:20.733] /p4.v1.P4Runtime/Write
 ---
 election_id {
   low: 1
@@ -83,13 +323,37 @@ updates {
           egress_port: 2
           instance: 1
         }
+        replicas {
+          egress_port: 3
+          instance: 1
+        }
+        replicas {
+          egress_port: 6
+          instance: 1
+        }
+        replicas {
+          egress_port: 7
+          instance: 1
+        }
+        replicas {
+          egress_port: 8
+          instance: 1
+        }
+        replicas {
+          egress_port: 9
+          instance: 1
+        }
+        replicas {
+          egress_port: 10
+          instance: 1
+        }
       }
     }
   }
 }
 ---
 
-[2020-09-27 16:58:09.884] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.734] /p4.v1.P4Runtime/Write
 ---
 election_id {
   low: 1

@@ -6,73 +6,13 @@
     {
       "table": "MyIngress.set_primary",
       "match": {
-        "meta.primary": 1 
+        "meta.primary": 1
       },
       "action_name": "MyIngress.answer_replica",
       "action_params": {
         "port": 4
       }
-    },
-    {
-      "table": "MyIngress.set_primary",
-      "match": {
-        "meta.primary": 2
-      },
-      "action_name": "MyIngress.answer_replica",
-      "action_params": {
-        "port": 5
-      }
-    },
-    {
-      "table": "MyIngress.set_destination",
-      "match": {
-        "hdr.gvt.pid": 0
-      },
-      "action_name": "MyIngress.send_message",
-      "action_params": {
-        "port": 1
-      }
-    },
-    {
-      "table": "MyIngress.set_destination",
-      "match": {
-        "hdr.gvt.pid": 1
-      },
-      "action_name": "MyIngress.send_message",
-      "action_params": {
-        "port": 2
-      }
-    },
-    {
-      "table": "MyIngress.this_switch",
-      "match": {
-        "hdr.gvt.sid": 0
-      },
-      "action_name": "MyIngress.set_id",
-      "action_params": {
-	"switch_id": 3
-      }
-    },
-    {
-      "table": "MyIngress.set_switch_dest",
-      "match": {
-        "hdr.gvt.sid": 1
-      },
-      "action_name": "MyIngress.send_message",
-      "action_params": {
-	"port": 4
-      }
-    },
-    {
-      "table": "MyIngress.set_switch_dest",
-      "match": {
-        "hdr.gvt.sid": 2
-      },
-      "action_name": "MyIngress.send_message",
-      "action_params": {
-	"port": 5
-      }
-    } 
+    }
   ],
   "multicast_group_entries" : [
     {
@@ -84,6 +24,14 @@
         },
         {
           "egress_port" : 2,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 3,
+          "instance" : 1
+        },
+	{
+          "egress_port" : 6,
           "instance" : 1
         }
       ]

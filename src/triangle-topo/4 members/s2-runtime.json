@@ -6,7 +6,7 @@
     {
       "table": "MyIngress.set_primary",
       "match": {
-        "meta.iterator": 4
+        "meta.primary": 1 
       },
       "action_name": "MyIngress.answer_replica",
       "action_params": {

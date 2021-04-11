@@ -1,10 +1,10 @@
 
-[2020-09-27 16:58:09.801] /p4.v1.P4Runtime/SetForwardingPipelineConfig
+[2021-04-11 00:20:20.669] /p4.v1.P4Runtime/SetForwardingPipelineConfig
 ---
-Message too long (86624 bytes)! Skipping log...
+Message too long (96258 bytes)! Skipping log...
 ---
 
-[2020-09-27 16:58:09.828] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.684] /p4.v1.P4Runtime/Write
 ---
 device_id: 1
 election_id {
@@ -18,7 +18,7 @@ updates {
       match {
         field_id: 1
         exact {
-          value: "\000\000\000\002"
+          value: "\000\000\000\001"
         }
       }
       action {
@@ -35,69 +35,7 @@ updates {
 }
 ---
 
-[2020-09-27 16:58:09.833] /p4.v1.P4Runtime/Write
----
-device_id: 1
-election_id {
-  low: 1
-}
-updates {
-  type: INSERT
-  entity {
-    table_entry {
-      table_id: 33561363
-      match {
-        field_id: 1
-        exact {
-          value: "\000\000\000\001"
-        }
-      }
-      action {
-        action {
-          action_id: 16819453
-          params {
-            param_id: 1
-            value: "\000\001"
-          }
-        }
-      }
-    }
-  }
-}
----
-
-[2020-09-27 16:58:09.835] /p4.v1.P4Runtime/Write
----
-device_id: 1
-election_id {
-  low: 1
-}
-updates {
-  type: INSERT
-  entity {
-    table_entry {
-      table_id: 33561363
-      match {
-        field_id: 1
-        exact {
-          value: "\000\000\000\002"
-        }
-      }
-      action {
-        action {
-          action_id: 16819453
-          params {
-            param_id: 1
-            value: "\000\002"
-          }
-        }
-      }
-    }
-  }
-}
----
-
-[2020-09-27 16:58:09.837] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.686] /p4.v1.P4Runtime/Write
 ---
 device_id: 1
 election_id {
@@ -117,13 +55,21 @@ updates {
           egress_port: 2
           instance: 1
         }
+        replicas {
+          egress_port: 3
+          instance: 1
+        }
+        replicas {
+          egress_port: 6
+          instance: 1
+        }
       }
     }
   }
 }
 ---
 
-[2020-09-27 16:58:09.839] /p4.v1.P4Runtime/Write
+[2021-04-11 00:20:20.687] /p4.v1.P4Runtime/Write
 ---
 device_id: 1
 election_id {
